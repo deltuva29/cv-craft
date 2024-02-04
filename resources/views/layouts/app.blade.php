@@ -36,5 +36,7 @@
     </main>
 </div>
 @filamentScripts
+
+<livewire:livewire-ui-modal/>
 </body>
 </html>
