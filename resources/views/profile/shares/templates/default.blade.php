@@ -3,12 +3,7 @@
 
         <div class="container mx-auto py-8 px-4">
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <div class="flex items-center"> <!-- Adjusted for alignment -->
-                    {{--                    <img--}}
-                    {{--                            class="h-20 w-20 rounded-full"--}}
-                    {{--                            src="https://ui-avatars.com/api/?name={{ urlencode($share->email) }}&color=7F9CF5&background=EFF6FF"--}}
-                    {{--                            alt=""--}}
-                    {{--                    >--}}
+                <div class="flex items-center">
                     <div class="">
                         <h1 class="text-3xl font-semibold">
                             {{ $share->profile->owner->name }}
