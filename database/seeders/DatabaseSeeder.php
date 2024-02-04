@@ -50,5 +50,9 @@ class DatabaseSeeder extends Seeder
 //        Share::factory(305)->create([
 //            'profile_id' => $user->id,
 //        ]);
+
+//        $this->call([
+//            SkillSeeder::class,
+//        ]);
     }
 }

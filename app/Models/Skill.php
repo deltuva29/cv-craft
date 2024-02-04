@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Skill extends Model
 {
@@ -16,14 +17,21 @@ class Skill extends Model
      */
     protected $fillable = [
         'uuid',
-        'name',
-        'slug',
         'level',
         'profile_id',
+        'skill_title_id',
     ];
 
     /**
      * @var array<string, string>
      */
     protected $casts = [];
+
+    /**
+     * @return BelongsTo<SkillTitle>
+     */
+    public function skillTitle(): BelongsTo
+    {
+        return $this->belongsTo(SkillTitle::class, 'skill_title_id');
+    }
 }
