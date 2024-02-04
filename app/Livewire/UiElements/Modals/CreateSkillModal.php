@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\UiElements\Modals;
 
 use App\Enums\ShareTemplate;
@@ -25,6 +27,11 @@ class CreateSkillModal extends ModalComponent implements HasForms
         $this->profile = $profile;
     }
 
+    public function render(): View
+    {
+        return view('livewire.ui-elements.modals.create-skill-modal');
+    }
+
     public function form(Form $form): Form
     {
         return $form
@@ -44,10 +51,5 @@ class CreateSkillModal extends ModalComponent implements HasForms
     public function create(): void
     {
         $this->dispatch('profile-updated');
-    }
-
-    public function render(): View
-    {
-        return view('livewire.ui-elements.modals.create-skill-modal');
     }
 }
