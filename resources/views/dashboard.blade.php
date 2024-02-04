@@ -21,7 +21,7 @@
 
                         <x-primary-button
                                 onclick="Livewire.dispatch('openModal', {
-                                    component: 'ui-elements.modals.create-skill-modal',
+                                    component: 'ui-elements.modals.skill.create-skill-modal',
                                     arguments: {
                                         profile: {{ $profile }}
                                     }

@@ -15,6 +15,7 @@ export default {
         './resources/views/filament/**/*.blade.php',
         './resources/views/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
+        './vendor/wire-elements/modal/src/ModalComponent.php',
         './resources/**/*.blade.php',
         './resources/*.blade.php',
         './resources/**/*.vue',

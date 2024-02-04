@@ -13,7 +13,7 @@ use App\Models\JobTitle;
 use App\Models\Language;
 use App\Models\LanguageLevel;
 use App\Models\LanguageTitle;
-use App\Models\Skill;
+use App\Models\SkillTitle;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -35,9 +35,11 @@ class DatabaseSeeder extends Seeder
         LanguageTitle::factory(10)->create();
         LanguageLevel::factory(4)->create();
 
-        Skill::factory(10)->create([
-            'profile_id' => $user->id,
-        ]);
+        SkillTitle::factory(10)->create();
+
+//        Skill::factory(10)->create([
+//            'profile_id' => $user->id,
+//        ]);
 
         Experience::factory(3)->create([
             'profile_id' => $user->id,

@@ -25,11 +25,6 @@ class Skill extends Model
     ];
 
     /**
-     * @var array<string, string>
-     */
-    protected $casts = [];
-
-    /**
      * @return BelongsTo<SkillTitle>
      */
     public function skillTitle(): BelongsTo
