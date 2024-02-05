@@ -20,6 +20,7 @@ class Profile extends Model
         'bio',
         'position',
         'location',
+        'phone',
         'image',
         'linkedin',
         'website',

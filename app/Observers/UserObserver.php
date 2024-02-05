@@ -18,7 +18,7 @@ class UserObserver
             'bio' => 'I am a Software Engineer',
             'position' => 'Software Engineer',
             'location' => 'Lithuania, Ukmerge',
-            'linkedin' => 'https://www.linkedin.com/in/desoftlab/',
+            'linkedin' => 'desoftlab',
             'website' => 'https://desoftlab.com',
         ]);
     }

@@ -23,8 +23,6 @@ class CreateSkillModal extends ModalComponent implements HasForms
 
     public Profile $profile;
 
-    public ?int $unselectedSkills = 0;
-
     public static function modalMaxWidth(): string
     {
         return '2xl';

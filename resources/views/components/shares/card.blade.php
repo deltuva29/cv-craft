@@ -3,9 +3,9 @@
 ])
 <li {{ $attributes->merge(['class' => 'flex items-center py-4']) }}>
     <div class="flex justify-between w-full">
-        <div class="flex items-center"> <!-- Adjusted for alignment -->
+        <div class="flex items-center">
             <img
-                    class="h-10 w-10 rounded-full"
+                    class="h-10 w-10 rounded-md"
                     src="https://ui-avatars.com/api/?name={{ urlencode($share->email) }}&color=7F9CF5&background=EFF6FF"
                     alt=""
             >
@@ -17,7 +17,7 @@
         <div class="flex items-center">
             <a href="{{ route('view.share', $share->token) }}"
                class="inline-flex items-center px-4 py-2 bg-secondary dark:bg-secondary border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-primary/75 dark:hover:bg-white focus:bg-primary/75 dark:focus:bg-primary/75 active:bg-primary/75 dark:active:bg-primary/75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150" wire:navigate
-            >{{ __('Share') }}</a>
+            >{{ __('View') }}</a>
         </div>
     </div>
 </li>

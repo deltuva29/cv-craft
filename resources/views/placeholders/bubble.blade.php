@@ -1,4 +1,4 @@
-<div class="flex pt-10 justify-center items-center">
+<div class="flex justify-center items-center">
     <svg class="h-12 w-12 fill-secondary" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
         <!-- First dot -->
         <circle cx="15" cy="15" r="15">

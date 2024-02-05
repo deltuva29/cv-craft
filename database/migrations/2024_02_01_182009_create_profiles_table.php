@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->longText('bio')->nullable();
             $table->string('position')->nullable();
             $table->string('location')->nullable();
+            $table->string('phone')->nullable();
             $table->string('image')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('website')->nullable();
