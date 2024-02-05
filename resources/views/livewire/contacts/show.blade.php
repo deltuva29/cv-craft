@@ -39,9 +39,15 @@ new class extends Component {
                 </x-primary-button>
             </div>
 
-            <div class="flex flex-col md:flex-row justify-between items-center md:items-start">
+            <div class="flex flex-col md:flex-row items-start md:items-start">
+                <div class="flex mx-auto md:mx-0">
+                    <img
+                            class="h-32 w-32 rounded-xl my-4 md:my-0 shadow-2xl"
+                            src="https://ui-avatars.com/api/?name={{ urlencode($profile->owner->email) }}&color=7F9CF5&background=EFF6FF"
+                            alt="{{ $profile->owner->name }}"
+                    >
+                </div>
                 <div class="flex flex-col md:flex-row items-center md:items-start">
-                    <img class="h-32 w-32 rounded-xl my-4 md:my-0 shadow-2xl" src="https://ui-avatars.com/api/?name={{ urlencode($profile->owner->email) }}&color=7F9CF5&background=EFF6FF" alt="">
                     <div class="ml-0 md:ml-6">
                         <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
                             {{ $profile->owner->name }}
