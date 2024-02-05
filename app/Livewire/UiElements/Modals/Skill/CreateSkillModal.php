@@ -6,6 +6,7 @@ namespace App\Livewire\UiElements\Modals\Skill;
 
 use App\Models\Profile;
 use App\Models\SkillTitle;
+use App\Traits\Skills\WithSkills;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -16,6 +17,7 @@ use LivewireUI\Modal\ModalComponent;
 class CreateSkillModal extends ModalComponent implements HasForms
 {
     use InteractsWithForms;
+    use WithSkills;
 
     public ?array $data = [];
 
@@ -64,23 +66,11 @@ class CreateSkillModal extends ModalComponent implements HasForms
     public function create(): void
     {
         $submittedSkillIds = $this->form->getState()['skill_title_id'] ?? [];
-        $currentSkillIds = $this->profile->skills->pluck('skill_title_id')->toArray();
 
-        $skillsToAdd = array_diff($submittedSkillIds, $currentSkillIds);
-        $skillsToRemove = array_diff($currentSkillIds, $submittedSkillIds);
-
-        $newSkills = array_map(fn($skillId) => [
-            'skill_title_id' => $skillId,
-        ], $skillsToAdd);
-
-        $this->profile->skills()
-            ->createMany($newSkills);
-
-        if (!empty($skillsToRemove)) {
-            $this->profile->skills()
-                ->whereIn('skill_title_id', $skillsToRemove)
-                ->delete();
-        }
+        $this->addSkillsToProfile(
+            $this->profile,
+            $submittedSkillIds
+        );
 
         $this->closeModal();
         $this->dispatch('profile-updated');
