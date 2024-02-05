@@ -40,16 +40,21 @@ new class extends Component {
             </div>
 
             <div class="flex flex-col md:flex-row items-start md:items-start">
-                <div class="flex mx-auto md:mx-0">
+                <div class="flex flex-col justify-center items-center mx-auto md:mx-0">
                     <img
                             class="h-32 w-32 rounded-xl my-4 md:my-0 shadow-2xl"
                             src="https://ui-avatars.com/api/?name={{ urlencode($profile->owner->email) }}&color=7F9CF5&background=EFF6FF"
                             alt="{{ $profile->owner->name }}"
                     >
+                    <div class="mb-6">
+                        <h2 class="block md:hidden font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
+                            {{ $profile->owner->name }}
+                        </h2>
+                    </div>
                 </div>
                 <div class="flex flex-col md:flex-row items-center md:items-start">
                     <div class="ml-0 md:ml-6">
-                        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
+                        <h2 class="hidden md:block font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
                             {{ $profile->owner->name }}
                         </h2>
                         <div class="font-medium text-lg text-gray-700 dark:text-gray-200 leading-tight">
