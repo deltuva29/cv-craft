@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Skill;
+use App\Models\SkillTitle;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
-
-// Replace with the actual Skill model namespace
 
 class SkillSeeder extends Seeder
 {
@@ -23,13 +21,19 @@ class SkillSeeder extends Seeder
             $skillsData = json_decode(File::get($filePath), true);
 
             if (!empty($skillsData)) {
-                Skill::upsert($skillsData, ['name'], ['description']);
-                $this->command->info('Skills seeded successfully.');
+                foreach ($skillsData['skills'] as $skill) {
+                    SkillTitle::query()->create([
+                        'title' => $skill,
+                    ]);
+                }
+                $addedSkills = count($skillsData['skills']) ?? 0;
+                
+                $this->command->info("Skills seeded successfully. {$addedSkills} skills added.");
             } else {
-                $this->command->error('The skills data is empty.');
+                $this->command->error("The skills data is empty.");
             }
         } else {
-            $this->command->error('Skills JSON file not found at '.$filePath);
+            $this->command->error("Skills JSON file not found at ".$filePath);
         }
     }
 }

@@ -31,25 +31,23 @@ new class extends Component {
     public function with(): array
     {
         return [
-            'shares' => $this->profile
-                ->shares()
-                ->paginate(10),
+            'skills' => $this->profile
+                ->skills()
+                ->get(),
         ];
     }
 }; ?>
 
 <div>
-    <x-shares.list-content>
-        @forelse ($shares as $share)
-            <x-shares.card
-                    :share="$share"
+    <x-skills.list-content>
+        @forelse ($skills as $skill)
+            <x-skills.card
+                    :skill="$skill"
             />
         @empty
             <x-empty-content
-                    title="{{ __('You have not added any shares CV yet.') }}"
+                    title="{{ __('You have not added any skills yet.') }}"
             />
         @endforelse
-    </x-shares.list-content>
-
-    {{ $shares->links() }}
+    </x-skills.list-content>
 </div>

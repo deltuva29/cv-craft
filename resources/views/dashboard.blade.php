@@ -15,9 +15,14 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex justify-between items-center">
-                        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                            {{ __('Skills') }}
-                        </h2>
+                        <div>
+                            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                                {{ __('Skills') }}
+                            </h2>
+                            <h3 class="text-gray-600 dark:text-gray-400">
+                                {{ __('Manage your skills.') }}
+                            </h3>
+                        </div>
 
                         <x-primary-button
                                 onclick="Livewire.dispatch('openModal', {
@@ -32,15 +37,10 @@
                     </div>
 
                     <hr class="my-4">
-                    <x-skills.list-content>
-                        @forelse ($profile->skills as $skill)
-                            <x-skills.card
-                                    :skill="$skill"
-                            />
-                        @empty
-                            <p>-</p>
-                        @endforelse
-                    </x-skills.list-content>
+                    <livewire:skills.show
+                            :profile="$profile"
+                            lazy="on-load"
+                    />
                 </div>
             </div>
         </div>
