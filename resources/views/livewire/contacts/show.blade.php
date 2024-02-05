@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\Profile;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
