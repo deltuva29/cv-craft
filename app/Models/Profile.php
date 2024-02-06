@@ -88,6 +88,14 @@ class Profile extends Model implements HasMedia
         return $this->hasMany(Share::class, 'profile_id');
     }
 
+    /**
+     * @return HasMany<Certificate>
+     */
+    public function certificates(): HasMany
+    {
+        return $this->hasMany(Certificate::class, 'profile_id');
+    }
+
     public function getAvatar(): string
     {
         return $this->hasMedia('avatar') ?

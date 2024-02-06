@@ -76,6 +76,20 @@
                 </x-languages.content>
 
                 <h2 class="text-xl font-semibold mt-4 mb-2">
+                    {{ __('Certificates') }}
+                </h2>
+                <hr class="my-4">
+                <x-certificates.content>
+                    @forelse ($share->profile->certificates as $certificate)
+                        <x-certificates.card
+                                :certificate="$certificate"
+                        />
+                    @empty
+                        <p>-</p>
+                    @endforelse
+                </x-certificates.content>
+
+                <h2 class="text-xl font-semibold mt-4 mb-2">
                     {{ __('Contact') }}
                 </h2>
                 <hr class="my-4">

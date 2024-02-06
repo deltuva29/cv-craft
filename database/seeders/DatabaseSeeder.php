@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Certificate;
 use App\Models\Company;
 use App\Models\Education;
 use App\Models\Experience;
@@ -45,6 +46,9 @@ class DatabaseSeeder extends Seeder
             'profile_id' => $user->id,
         ]);
         Language::factory(1)->create([
+            'profile_id' => $user->id,
+        ]);
+        Certificate::factory(2)->create([
             'profile_id' => $user->id,
         ]);
 
