@@ -2,16 +2,59 @@
 
 declare(strict_types=1);
 
+use App\Http\Requests\Profile\UpdateProfileAvatarRequest;
 use App\Models\Profile;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
+use Livewire\WithFileUploads;
 
 new class extends Component {
+    use WithFileUploads;
+
     public Profile $profile;
+
+    public $avatar;
 
     public function mount(Profile $profile): void
     {
         $this->profile = $profile;
+    }
+
+    public function rules(): array
+    {
+        return (new UpdateProfileAvatarRequest())
+            ->rules();
+    }
+
+    public function updatedAvatar()
+    {
+        $this->validate();
+
+        try {
+            if ($this->avatar) {
+                $fileName = strtolower(str_replace(['#', '/', '\\', ' '], '-', $this->avatar->getFilename()));
+                $this->profile->clearMediaCollection('avatar');
+                $sanitizeFileName = static fn($fileName) => strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
+
+                $this->profile->addMediaFromStream($this->avatar->get())
+                    ->sanitizingFileName($sanitizeFileName)
+                    ->usingFileName($fileName)
+                    ->toMediaCollection('avatar', 'avatars');
+            }
+        } catch (Exception $ex) {
+            session()->flash('error', $ex->getMessage());
+        }
+    }
+
+    public function removeAvatar(): void
+    {
+        try {
+            if ($this->profile->hasMedia('avatar')) {
+                $this->profile->clearMediaCollection('avatar');
+            }
+        } catch (Exception $ex) {
+            session()->flash('error', $ex->getMessage());
+        }
     }
 
     #[On('profile-updated')]
@@ -43,20 +86,37 @@ new class extends Component {
 
             <div class="flex flex-col md:flex-row items-start md:items-start">
                 <div class="flex flex-col justify-center items-center mx-auto md:mx-0">
-                    <img
-                            class="h-32 w-32 rounded-xl my-4 md:my-0 shadow-2xl"
-                            src="https://ui-avatars.com/api/?name={{ urlencode($profile->owner->email) }}&color=7F9CF5&background=EFF6FF"
-                            alt="{{ $profile->owner->name }}"
-                    >
+                    <div class="relative">
+                        @if ($profile->hasMedia('avatar'))
+                            <x-secondary-button
+                                    wire:click.prevent="removeAvatar"
+                                    class="!absolute !top-0 md:!-top-2 !-right-2 !bg-secondary !p-1 !rounded-lg !shadow-md !border-none !cursor-pointer"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                                </svg>
+                            </x-secondary-button>
+                        @else
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-0 md:-top-2 -right-2 bg-secondary h-8 w-8 text-white p-1 rounded-lg shadow-md cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                            </svg>
+                            <input wire:model="avatar" type="file" name="avatar" class="absolute -top-[0.5rem] -right-[15rem] opacity-0 cursor-pointer">
+                        @endif
+                        <img
+                                class="w-32 h-32 object-cover rounded-xl my-4 md:my-0 shadow-2xl"
+                                src="{{ $profile->getAvatar() }}"
+                                alt="{{ $profile->owner->name }}"
+                        >
+                    </div>
                     <div class="mb-6">
-                        <h2 class="block md:hidden font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
+                        <h2 class="block md:hidden font-semibold text-2xl text-primary dark:text-gray-200 leading-tight truncate">
                             {{ $profile->owner->name }}
                         </h2>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row items-center md:items-start">
-                    <div class="ml-0 md:ml-6">
-                        <h2 class="hidden md:block font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
+                    <div class="ml-0 md:ml-9">
+                        <h2 class="hidden md:block font-semibold text-2xl text-primary dark:text-gray-200 leading-tight truncate">
                             {{ $profile->owner->name }}
                         </h2>
                         <div class="font-medium text-lg text-gray-700 dark:text-gray-200 leading-tight">
@@ -68,7 +128,7 @@ new class extends Component {
                                 <a href="mailto:{{ $profile->owner->email }}"
                                    target="_blank"
                                    rel="noopener noreferrer"
-                                   class="flex items-center justify-center md:justify-start text-gray-700 hover:text-secondary hover:underline"
+                                   class="flex items-center justify-center md:justify-start text-gray-700 hover:text-secondary hover:underline truncate"
                                 >
                                     {{ $profile->owner->email }}
                                 </a>

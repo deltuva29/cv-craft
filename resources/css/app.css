@@ -8,6 +8,16 @@
     display: none !important;
 }
 
+.avatar {
+    content: " ";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 @layer utilities {
     .shadow-code {
         box-shadow: 0 40px 207px 0 rgba(0, 1, 139, 0.1);

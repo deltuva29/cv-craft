@@ -24,7 +24,6 @@ class ProfileFactory extends Factory
             'bio' => $this->faker->paragraph(4),
             'position' => $this->faker->jobTitle(),
             'location' => $this->faker->city(),
-            'image' => $this->faker->imageUrl(),
             'linkedin' => $this->faker->url(),
             'website' => $this->faker->url(),
             'user_id' => User::factory(),

@@ -20,6 +20,16 @@
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <div>
+                        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                            {{ __('Shares') }}
+                        </h2>
+                        <h3 class="text-gray-600 dark:text-gray-400">
+                            {{ __('Manage your shares.') }}
+                        </h3>
+                    </div>
+
+                    <hr class="my-4">
                     <livewire:shares.show
                             :profile="$profile"
                             lazy="on-load"
