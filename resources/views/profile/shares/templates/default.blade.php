@@ -6,7 +6,7 @@
                 <div class="flex items-center">
                     <div class="">
                         <h1 class="text-3xl font-semibold">
-                            {{ $share->profile->owner->name }}
+                            {{ $share->profile->owner->full_name }}
                         </h1>
                         <p class="text-gray-600">{{ $share->profile->position }}, {{ $share->profile->location }}</p>
                     </div>
