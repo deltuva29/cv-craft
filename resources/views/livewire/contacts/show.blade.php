@@ -105,19 +105,19 @@ new class extends Component {
                         <img
                                 class="w-32 h-32 object-cover rounded-xl my-4 md:my-0 shadow-2xl"
                                 src="{{ $profile->getAvatar() }}"
-                                alt="{{ $profile->owner->name }}"
+                                alt="{{ $profile->owner->full_name }}"
                         >
                     </div>
                     <div class="mb-6">
                         <h2 class="block md:hidden font-semibold text-2xl text-primary dark:text-gray-200 leading-tight truncate">
-                            {{ $profile->owner->name }}
+                            {{ $profile->owner->full_name }}
                         </h2>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row items-center md:items-start">
                     <div class="ml-0 md:ml-9">
                         <h2 class="hidden md:block font-semibold text-2xl text-primary dark:text-gray-200 leading-tight truncate">
-                            {{ $profile->owner->name }}
+                            {{ $profile->owner->full_name }}
                         </h2>
                         <div class="font-medium text-lg text-gray-700 dark:text-gray-200 leading-tight">
                             <div class="flex items-center justify-center md:justify-start">

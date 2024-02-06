@@ -55,7 +55,7 @@ new class extends Component {
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white dark:text-white bg-primary dark:bg-primary hover:text-white dark:hover:text-white focus:outline-none transition ease-in-out duration-150">
-                            <div x-data="{{ json_encode(['name' => auth()->user()->name ?? '']) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
+                            <div x-data="{{ json_encode(['name' => auth()->user()->full_name ?? '']) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

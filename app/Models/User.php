@@ -9,6 +9,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -70,8 +71,32 @@ class User extends Authenticatable implements FilamentUser, HasForms
         return $this->hasOne(Profile::class, 'user_id');
     }
 
+    /**
+     * @param  Panel  $panel
+     * @return bool
+     */
     public function canAccessPanel(Panel $panel): bool
     {
         return str_ends_with($this->email, '@desoftlab.com');
+    }
+
+    /**
+     * Accessor to get the first name from the full name.
+     */
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attributes) => explode(' ', $attributes['name'])[0],
+        );
+    }
+
+    /**
+     * Accessor to get the full name, potentially formatted.
+     */
+    protected function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attributes) => $attributes['name'],
+        );
     }
 }
