@@ -178,7 +178,7 @@ new class extends Component {
                 <div class="hidden sm:flex sm:items-center sm:ms-6 group">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button @click="open = !open; $dispatch('nav')" type="button" class="inline-flex group-hover:text-secondary items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white dark:text-white bg-primary dark:bg-primary hover:text-white dark:hover:text-white focus:outline-none transition ease-in-out duration-150">
+                            <button @click="open = !open; $dispatch('nav')" type="button" class="inline-flex group-hover:text-secondary items-center px-3 md:pr-0 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white dark:text-white bg-primary dark:bg-primary hover:text-white dark:hover:text-white focus:outline-none transition ease-in-out duration-150">
                                 <div x-data="{{ json_encode(['name' => auth()->user()->name ?? '']) }}"
                                      x-text="name"
                                      x-on:profile-updated.window="name = $event.detail.name"
