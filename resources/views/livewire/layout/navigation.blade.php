@@ -186,8 +186,8 @@ new class extends Component {
                                 ></div>
 
                                 <div class="ms-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24">
-                                        <path fill="currentColor" d="M21 5v2H3V5zM3 17h9v-2H3zm0-5h18v-2H3zm15 2a2 2 0 1 1 0 4c-1.11 0-2-.89-2-2s.9-2 2-2m-4 8v-1c0-1.1 1.79-2 4-2s4 .9 4 2v1z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 256 256">
+                                        <path fill="currentColor" d="M144 80a8 8 0 0 1 8-8h96a8 8 0 0 1 0 16h-96a8 8 0 0 1-8-8m104 40h-96a8 8 0 0 0 0 16h96a8 8 0 0 0 0-16m0 48h-72a8 8 0 0 0 0 16h72a8 8 0 0 0 0-16m-138.71-26a48 48 0 1 0-58.58 0c-20.62 8.73-36.87 26.3-42.46 48A8 8 0 0 0 16 200h128a8 8 0 0 0 7.75-10c-5.59-21.71-21.84-39.28-42.46-48"/>
                                     </svg>
                                 </div>
                             </button>
@@ -198,8 +198,8 @@ new class extends Component {
                 <!-- Hamburger -->
                 <div class="-me-2 flex items-center sm:hidden">
                     <button @click="open = !open; $dispatch('nav')" class="inline-flex items-center justify-center p-2 rounded-md text-white dark:text-gray-500 hover:text-secondary dark:hover:text-secondary focus:outline-none focus:bg-none focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M21 5v2H3V5zM3 17h9v-2H3zm0-5h18v-2H3zm15 2a2 2 0 1 1 0 4c-1.11 0-2-.89-2-2s.9-2 2-2m-4 8v-1c0-1.1 1.79-2 4-2s4 .9 4 2v1z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 256 256">
+                            <path fill="currentColor" d="M144 80a8 8 0 0 1 8-8h96a8 8 0 0 1 0 16h-96a8 8 0 0 1-8-8m104 40h-96a8 8 0 0 0 0 16h96a8 8 0 0 0 0-16m0 48h-72a8 8 0 0 0 0 16h72a8 8 0 0 0 0-16m-138.71-26a48 48 0 1 0-58.58 0c-20.62 8.73-36.87 26.3-42.46 48A8 8 0 0 0 16 200h128a8 8 0 0 0 7.75-10c-5.59-21.71-21.84-39.28-42.46-48"/>
                         </svg>
                     </button>
                 </div>
