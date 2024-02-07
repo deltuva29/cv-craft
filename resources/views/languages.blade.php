@@ -13,12 +13,21 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @if ($profile->languages->isEmpty())
-                        <x-empty-content
-                                title="{{ __('You have not added any languages yet.') }}"
-                        />
+                        <div x-data="{ empty: false }">
+                            <div
+                                    @profile-updated.window="empty = true"
+                                    x-show="!empty"
+                                    x-cloak
+                            >
+                                <x-empty-content
+                                        title="{{ __('You have not added any languages yet.') }}"
+                                        class="mb-6"
+                                />
+                            </div>
+                        </div>
                     @endif
 
-                    <div class="flex justify-between mt-6 items-center">
+                    <div class="flex justify-between items-center">
                         <div>
                             <x-header-title
                                     title="{{ __('Languages') }}"

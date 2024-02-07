@@ -14,6 +14,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
+use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component implements HasForms {
