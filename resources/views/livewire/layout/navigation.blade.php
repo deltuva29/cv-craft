@@ -90,7 +90,7 @@ new class extends Component {
                     @click="open = !open"
                     wire:navigate
             >
-                {{ __('Shares') }}
+                {{ __('CV Shares') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link
                     :href="route('profile')"
