@@ -21,6 +21,7 @@ Route::view('biography', 'biography')->middleware(['auth', 'verified'])->name('b
 Route::view('experiences', 'experiences')->middleware(['auth', 'verified'])->name('experiences');
 Route::view('educations', 'educations')->middleware(['auth', 'verified'])->name('educations');
 Route::view('languages', 'languages')->middleware(['auth', 'verified'])->name('languages');
+Route::view('certificates', 'certificates')->middleware(['auth', 'verified'])->name('certificates');
 Route::view('shares', 'shares')->middleware(['auth', 'verified'])->name('shares');
 Route::view('profile', 'profile')->middleware(['auth'])->name('profile');
 

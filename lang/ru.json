@@ -43,7 +43,7 @@
   "Shares": "Поделиться",
   "Manage your shares.": "Управляйте вашими распространениями.",
   "You have not added any shares CV yet.": "Вы еще не добавили никаких резюме для распространения.",
-  "View": "Посмотреть резюме",
+  "View": "Посмотреть",
   "Certificates": "Сертификаты",
   "You have not added any certificates yet.": "Вы еще не добавили никаких сертификатов.",
   "Skills": "Навыки",
@@ -75,5 +75,11 @@
   "Save": "Сохранить",
   "Saving..": "Сохранение..",
   "Saved.": "Сохранено.",
-  "Log Out": "Выйти"
+  "Log Out": "Выйти",
+  "Add your learned certificates.": "Добавьте ваши сертификаты.",
+  "Title": "Название",
+  "Received year": "Год получения",
+  "Manage your certificates.": "Управляйте вашими сертификатами.",
+  "Add certificate": "Добавить сертификат",
+  "+ Add Certificates": "+ Добавить другой сертификат"
 }

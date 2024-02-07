@@ -79,7 +79,7 @@ new class extends Component {
                 {{ __('Languages') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link
-                    :href="route('languages')"
+                    :href="route('certificates')"
                     @click="open = !open"
                     wire:navigate
             >
