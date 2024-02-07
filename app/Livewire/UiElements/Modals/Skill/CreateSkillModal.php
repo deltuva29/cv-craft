@@ -46,7 +46,7 @@ class CreateSkillModal extends ModalComponent implements HasForms
         return $form
             ->schema([
                 Select::make('skill_title_id')
-                    ->label('Select Skill')
+                    ->label(__('Select Skill'))
                     ->multiple()
                     ->nullable()
                     ->options(

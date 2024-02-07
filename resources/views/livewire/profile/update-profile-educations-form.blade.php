@@ -37,25 +37,42 @@ new class extends Component implements HasForms {
         return $form
             ->schema([
                 Repeater::make('educations')
+                    ->label(__(''))
                     ->relationship()
                     ->schema([
                         Select::make('title')
+                            ->label(__('Graduation'))
                             ->relationship('graduation', 'title')
                             ->required()
                             ->searchable()
                             ->preload(),
                         Select::make('ended_year')
+                            ->label(__('Ended year'))
                             ->options(array_combine(range(now()->year, 1900), range(now()->year, 1900)))
                             ->required()
                             ->searchable()
                             ->hidden(fn(Get $get): bool => $get('ended_year') === false),
                         TextInput::make('specialty')
+                            ->label(__('Specialty'))
                             ->required()
                             ->suffixIcon('heroicon-m-newspaper'),
                         TextInput::make('institution')
+                            ->label(__('Institution'))
                             ->required()
                             ->suffixIcon('heroicon-m-building-office'),
                         MarkdownEditor::make('achievements')
+                            ->label(__('Achievements'))
+                            ->toolbarButtons([
+                                'blockquote',
+                                'bold',
+                                'bulletList',
+                                'italic',
+                                'link',
+                                'orderedList',
+                                'redo',
+                                'strike',
+                                'undo',
+                            ])
                             ->required()->columnSpan('full'),
                     ])->addActionLabel(__('+ Add Education'))
                     ->columns()

@@ -83,13 +83,14 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'lt',
 
-    'locales' => ['en', 'lt'],
+    'locales' => ['en', 'lt', 'ru'],
 
     'locale_labels' => [
         'en' => 'English',
         'lt' => 'Lietuvių',
+        'ru' => 'Rusų',
     ],
 
     /*

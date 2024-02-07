@@ -170,7 +170,7 @@ new class extends Component {
                                 :active="request()->routeIs('shares')"
                                 wire:navigate
                         >
-                            {{ __('CV Share') }}
+                            {{ __('CV Shares') }}
                         </x-nav-link>
                     </div>
                 </div>

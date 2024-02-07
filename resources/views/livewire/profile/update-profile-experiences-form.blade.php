@@ -38,26 +38,45 @@ new class extends Component implements HasForms {
         return $form
             ->schema([
                 Repeater::make('experiences')
+                    ->label(__(''))
                     ->relationship()
                     ->schema([
                         Select::make('title')
+                            ->label(__('Job Title'))
                             ->relationship('jobTitle', 'name')
                             ->required()
                             ->searchable()
                             ->preload(),
                         Select::make('company')
+                            ->label(__('Company'))
                             ->relationship('company', 'name')
                             ->required()
                             ->searchable()
                             ->preload(),
                         MarkdownEditor::make('description')
+                            ->label(__('Description'))
+                            ->toolbarButtons([
+                                'blockquote',
+                                'bold',
+                                'bulletList',
+                                'italic',
+                                'link',
+                                'orderedList',
+                                'redo',
+                                'strike',
+                                'undo',
+                            ])
                             ->required()
                             ->columnSpan('full'),
                         DatePicker::make('started_at')
+                            ->label(__('Started at'))
                             ->requiredWithout('current')->required(),
-                        DatePicker::make('ended_at')->hidden(static fn(Get $get): bool => $get('current'))
+                        DatePicker::make('ended_at')
+                            ->label(__('Ended at'))
+                            ->hidden(static fn(Get $get): bool => $get('current'))
                             ->requiredWithout('current')->required(static fn(Get $get): bool => !$get('current')),
                         Checkbox::make('current')
+                            ->label(__('Current'))
                             ->afterStateUpdated(static fn(Set $set, $state) => $set('ended_at', null))
                             ->reactive()
                             ->nullable()

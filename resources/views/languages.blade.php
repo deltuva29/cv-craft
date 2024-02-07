@@ -18,7 +18,7 @@
                         />
                     @endif
 
-                    <div class="flex justify-between items-center">
+                    <div class="flex justify-between mt-6 items-center">
                         <div>
                             <x-header-title
                                     title="{{ __('Languages') }}"

@@ -28,12 +28,15 @@ new class extends Component implements HasForms {
         return $form
             ->schema([
                 TextInput::make('email')
+                    ->label(__('Email'))
                     ->required()
                     ->email()
-                    ->helperText('Your email address will be used to share your profile.')
+                    ->helperText(__('Your email address will be used to share your profile.'))
                     ->suffixIcon('heroicon-m-envelope'),
                 Select::make('template')
+                    ->label(__('Template'))
                     ->options(ShareTemplate::class)
+                    ->helperText(__('Choose a template to share your profile.'))
                     ->required()
             ])
             ->statePath('data');

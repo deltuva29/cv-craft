@@ -37,14 +37,17 @@ new class extends Component implements HasForms {
         return $form
             ->schema([
                 Repeater::make('languages')
+                    ->label(__(''))
                     ->relationship()
                     ->schema([
                         Select::make('languageTitle')
+                            ->label(__(''))
                             ->relationship('languageTitle', 'title')
                             ->required()
                             ->searchable()
                             ->preload(),
                         Select::make('languageLevel')
+                            ->label(__(''))
                             ->relationship('languageLevel', 'title')
                             ->required()
                             ->searchable()

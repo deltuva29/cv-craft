@@ -39,6 +39,7 @@ new class extends Component implements HasForms {
         return $form
             ->schema([
                 MarkdownEditor::make('bio')
+                    ->label(__(''))
                     ->toolbarButtons([
                         'blockquote',
                         'bold',
