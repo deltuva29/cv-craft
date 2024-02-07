@@ -47,7 +47,7 @@ new class extends Component {
         <h2 class="font-semibold text-xl text-primary leading-tight py-4 px-5 text-left mt-2 truncate">
             {{ auth()->user()->full_name ?? '' }}
         </h2>
-        <hr class="my-2">
+        <hr class="my-1">
 
         <div class="mt-3 space-y-1">
             <x-responsive-nav-link
@@ -96,11 +96,12 @@ new class extends Component {
                     :href="route('profile')"
                     @click="open = !open"
                     wire:navigate
+                    class="!mb-6"
             >
                 {{ __('Profile') }}
             </x-responsive-nav-link>
 
-            <hr class="my-2">
+            <hr class="mt-4">
             <!-- Authentication -->
             <button wire:click="logout" class="w-full text-start">
                 <x-responsive-nav-link class="flex items-center">
