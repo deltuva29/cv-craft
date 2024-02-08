@@ -33,16 +33,9 @@ new class extends Component {
                 :profile="$this->profile"
         />
     @else
-        <div x-data="{ empty: false }">
-            <div
-                    @profile-updated.window="empty = true"
-                    x-show="!empty"
-                    x-cloak
-            >
-                <x-empty-content
-                        title="{{ __('You have not added any certificates yet.') }}"
-                />
-            </div>
-        </div>
+        <x-empty-content
+                title="{{ __('You have not added any certificates yet.') }}"
+        />
+
     @endif
 </div>
