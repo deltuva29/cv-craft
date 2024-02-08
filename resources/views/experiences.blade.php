@@ -12,21 +12,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @if ($profile->experiences->isEmpty())
-                        <div x-data="{ empty: false }">
-                            <div
-                                    @profile-updated.window="empty = true"
-                                    x-show="!empty"
-                                    x-cloak
-                            >
-                                <x-empty-content
-                                        title="{{ __('You have not added any experiences yet.') }}"
-                                        class="mb-6"
-                                />
-                            </div>
-                        </div>
-                    @endif
-
                     <div class="flex justify-between items-center">
                         <div>
                             <x-header-title
@@ -53,8 +38,9 @@
                     </div>
 
                     <hr class="my-4">
-                    <livewire:profile.update-profile-experiences-form
+                    <livewire:experiences.show
                             :profile="$profile"
+                            lazy="on-load"
                     />
                 </div>
             </div>
