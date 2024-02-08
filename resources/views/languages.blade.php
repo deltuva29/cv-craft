@@ -37,7 +37,7 @@
 
                         <x-primary-button
                                 onclick="Livewire.dispatch('openModal', {
-                                    component: 'ui-elements.modals.skill.create-skill-modal',
+                                    component: 'ui-elements.modals.profile.create-profile-language-modal',
                                     arguments: {
                                         profile: {{ $profile }}
                                     }

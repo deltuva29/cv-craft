@@ -40,14 +40,14 @@ new class extends Component implements HasForms {
                     ->label(__(''))
                     ->relationship()
                     ->schema([
-                        Select::make('languageTitle')
-                            ->label(__(''))
+                        Select::make('language_title_id')
+                            ->label(__('Language'))
                             ->relationship('languageTitle', 'title')
                             ->required()
                             ->searchable()
                             ->preload(),
-                        Select::make('languageLevel')
-                            ->label(__(''))
+                        Select::make('language_level_id')
+                            ->label(__('Level'))
                             ->relationship('languageLevel', 'title')
                             ->required()
                             ->searchable()
