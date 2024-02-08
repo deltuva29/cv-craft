@@ -30,10 +30,4 @@ class Skill extends Model
     protected $casts = [
         'custom' => 'boolean',
     ];
-
-
-    public function isCustom(): bool
-    {
-        return $this->custom;
-    }
 }
