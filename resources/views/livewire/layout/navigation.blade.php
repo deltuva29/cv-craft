@@ -182,7 +182,7 @@ new class extends Component {
                             <button @click="open = !open; $dispatch('nav')" type="button" class="inline-flex group-hover:text-secondary items-center px-3 md:pr-0 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white dark:text-white bg-primary dark:bg-primary hover:text-white dark:hover:text-white focus:outline-none transition ease-in-out duration-150">
                                 <div x-data="{{ json_encode(['name' => auth()->user()->name ?? '']) }}"
                                      x-text="name"
-                                     x-on:profile-updated.window="name = $event.detail.name"
+                                     @profile-information-updated.window="name = $event.detail.name"
                                 ></div>
 
                                 <div class="ms-1">
