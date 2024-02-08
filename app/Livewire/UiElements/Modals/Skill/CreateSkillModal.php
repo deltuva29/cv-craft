@@ -14,6 +14,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
 
@@ -65,7 +66,7 @@ class CreateSkillModal extends ModalComponent implements HasForms
                 Checkbox::make('custom')
                     ->label(__('Add Custom Skill?'))
                     ->reactive()
-                    ->afterStateUpdated(fn($set, ?bool $state): bool => $set('custom_title', $state)),
+                    ->afterStateUpdated(fn(Set $set, ?bool $state): bool => $set('custom_title', $state)),
                 TextInput::make('custom_name')
                     ->label(__('Custom Skill Title'))
                     ->required()

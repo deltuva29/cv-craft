@@ -26,7 +26,7 @@ new class extends Component {
             ->rules();
     }
 
-    public function updatedAvatar()
+    public function updatedAvatar(): void
     {
         $this->validate();
 
