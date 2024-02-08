@@ -21,7 +21,7 @@
                     <p class="text-gray-700">-</p>
                 @endunless
 
-                <h2 class="text-xl font-semibold mt-4 mb-2">Skills</h2>
+                <h2 class="text-xl font-semibold mt-4 mb-2">{{ __('Skills') }}</h2>
                 <hr class="my-4">
                 <x-skills.list-content>
                     @forelse ($share->profile->skills as $skill)
@@ -48,7 +48,7 @@
                 </x-experiences.content>
 
                 <h2 class="text-xl font-semibold mt-4 mb-2">
-                    {{ __('Education') }}
+                    {{ __('Educations') }}
                 </h2>
                 <hr class="my-4">
                 <x-educations.content>
@@ -90,7 +90,7 @@
                 </x-certificates.content>
 
                 <h2 class="text-xl font-semibold mt-4 mb-2">
-                    {{ __('Contact') }}
+                    {{ __('Contacts') }}
                 </h2>
                 <hr class="my-4">
                 <ul class="list-disc list-inside text-gray-700">
