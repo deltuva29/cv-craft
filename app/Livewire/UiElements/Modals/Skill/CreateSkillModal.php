@@ -35,7 +35,9 @@ class CreateSkillModal extends ModalComponent implements HasForms
     {
         $this->profile = $profile;
         $this->form->fill([
-            'title' => $profile->skills()->pluck('title')->toArray(),
+            'title' => $profile->skills()
+                ->pluck('title')
+                ->toArray(),
         ]);
     }
 
@@ -75,13 +77,18 @@ class CreateSkillModal extends ModalComponent implements HasForms
 
     public function create(): void
     {
-        if ($this->form->getState()['custom']) {
+        $formData = $this->form->getState();
+        $isCustomSkill = $formData['custom'] ?? false;
+        $customSkillName = $formData['custom_name'] ?? '';
+        $selectedSkillTitles = $formData['title'] ?? [];
+
+        if ($isCustomSkill) {
             $this->profile->skills()->create([
                 'custom' => true,
-                'title' => $this->form->getState()['custom_name'],
+                'title' => $customSkillName,
             ]);
         } else {
-            $submittedSkillIds = $this->form->getState()['title'] ?? [];
+            $submittedSkillIds = $selectedSkillTitles;
 
             $this->addSkillsToProfile(
                 $this->profile,
