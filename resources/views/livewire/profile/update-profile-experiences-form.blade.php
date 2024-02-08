@@ -42,13 +42,13 @@ new class extends Component implements HasForms {
                     ->label(__(''))
                     ->relationship()
                     ->schema([
-                        Select::make('title')
+                        Select::make('job_title_id')
                             ->label(__('Job Title'))
                             ->relationship('jobTitle', 'name')
                             ->required()
                             ->searchable()
                             ->preload(),
-                        Select::make('company')
+                        Select::make('company_id')
                             ->label(__('Company'))
                             ->relationship('company', 'name')
                             ->required()
