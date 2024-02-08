@@ -40,7 +40,7 @@ new class extends Component implements HasForms {
                     ->label(__(''))
                     ->relationship()
                     ->schema([
-                        Select::make('title')
+                        Select::make('graduation_id')
                             ->label(__('Graduation'))
                             ->relationship('graduation', 'title')
                             ->required()
