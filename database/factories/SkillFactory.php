@@ -24,7 +24,9 @@ class SkillFactory extends Factory
         return [
             'level' => $this->faker->numberBetween(0, 5),
             'profile_id' => Profile::factory(),
-            'skill_title_id' => SkillTitle::factory(),
+            'title' => SkillTitle::factory(),
+            'custom' => $this->faker->boolean,
+            'custom_title' => $this->faker->sentence(),
         ];
     }
 }

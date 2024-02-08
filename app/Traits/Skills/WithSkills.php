@@ -8,20 +8,20 @@ trait WithSkills
 {
     public function addSkillsToProfile($profile, $submittedSkillIds): void
     {
-        $currentSkillIds = $profile->skills->pluck('skill_title_id')->toArray();
+        $currentSkillIds = $profile->skills->pluck('title')->toArray();
 
         $skillsToAdd = array_diff($submittedSkillIds, $currentSkillIds);
         $skillsToRemove = array_diff($currentSkillIds, $submittedSkillIds);
 
         $newSkills = array_map(fn($skillId) => [
-            'skill_title_id' => $skillId,
+            'title' => $skillId,
         ], $skillsToAdd);
 
         $profile->skills()->createMany($newSkills);
 
         if (!empty($skillsToRemove)) {
             $profile->skills()
-                ->whereIn('skill_title_id', $skillsToRemove)
+                ->whereIn('title', $skillsToRemove)
                 ->delete();
         }
     }

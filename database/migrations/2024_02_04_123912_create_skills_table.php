@@ -16,7 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->uuid()->unique();
             $table->integer('level')->default(0);
-            $table->foreignId('skill_title_id')->nullable()->index()->constrained()->cascadeOnDelete();
+            $table->string('title')->nullable();
+            $table->boolean('custom')->default(false);
             $table->foreignId('profile_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

@@ -7,10 +7,13 @@ namespace App\Livewire\UiElements\Modals\Skill;
 use App\Models\Profile;
 use App\Models\SkillTitle;
 use App\Traits\Skills\WithSkills;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
 
@@ -32,7 +35,7 @@ class CreateSkillModal extends ModalComponent implements HasForms
     {
         $this->profile = $profile;
         $this->form->fill([
-            'skill_title_id' => $profile->skills->pluck('skill_title_id')->toArray(),
+            'title' => $profile->skills()->pluck('title')->toArray(),
         ]);
     }
 
@@ -45,17 +48,26 @@ class CreateSkillModal extends ModalComponent implements HasForms
     {
         return $form
             ->schema([
-                Select::make('skill_title_id')
+                Select::make('title')
                     ->label(__('Select Skill'))
                     ->multiple()
                     ->nullable()
                     ->options(
                         SkillTitle::all()
-                            ->pluck('title', 'id')
+                            ->pluck('title', 'title')
                     )
                     ->searchable()
                     ->preload()
-                    ->reactive(),
+                    ->reactive()
+                    ->hidden(fn(Get $get) => $get('custom_title')),
+                Checkbox::make('custom')
+                    ->label(__('Add Custom Skill?'))
+                    ->reactive()
+                    ->afterStateUpdated(fn($set, ?bool $state): bool => $set('custom_title', $state)),
+                TextInput::make('custom_name')
+                    ->label(__('Custom Skill Title'))
+                    ->required()
+                    ->visible(fn(Get $get) => $get('custom_title')),
             ])
             ->statePath('data')
             ->model($this->profile);
@@ -63,12 +75,19 @@ class CreateSkillModal extends ModalComponent implements HasForms
 
     public function create(): void
     {
-        $submittedSkillIds = $this->form->getState()['skill_title_id'] ?? [];
+        if ($this->form->getState()['custom']) {
+            $this->profile->skills()->create([
+                'custom' => true,
+                'title' => $this->form->getState()['custom_name'],
+            ]);
+        } else {
+            $submittedSkillIds = $this->form->getState()['title'] ?? [];
 
-        $this->addSkillsToProfile(
-            $this->profile,
-            $submittedSkillIds
-        );
+            $this->addSkillsToProfile(
+                $this->profile,
+                $submittedSkillIds
+            );
+        }
 
         $this->closeModal();
         $this->dispatch('profile-updated');

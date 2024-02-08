@@ -81,5 +81,7 @@
   "Received year": "Gavimo metai",
   "Manage your certificates.": "Valdykite savo sertifikatus.",
   "Add certificate": "Pridėti sertifikatą",
-  "+ Add Certificates": "+ Pridėti kitą sertifikatą"
+  "+ Add Certificates": "+ Pridėti kitą sertifikatą",
+  "Add Custom Skill?": "Pridėti naują įgūdį ne iš sąrašo?",
+  "Custom Skill Title": "Pavadinimas"
 }

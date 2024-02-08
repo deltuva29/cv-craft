@@ -7,7 +7,6 @@ namespace App\Models;
 use App\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Skill extends Model
 {
@@ -21,14 +20,20 @@ class Skill extends Model
         'uuid',
         'level',
         'profile_id',
-        'skill_title_id',
+        'title',
+        'custom',
     ];
 
     /**
-     * @return BelongsTo<SkillTitle>
+     * @var array<string, string>
      */
-    public function skillTitle(): BelongsTo
+    protected $casts = [
+        'custom' => 'boolean',
+    ];
+
+
+    public function isCustom(): bool
     {
-        return $this->belongsTo(SkillTitle::class, 'skill_title_id');
+        return $this->custom;
     }
 }
