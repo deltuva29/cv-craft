@@ -2,22 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\LanguageTitleResource\Pages;
-use App\Filament\Resources\LanguageTitleResource\RelationManagers;
-use App\Models\LanguageTitle;
+use App\Filament\Resources\LanguageLevelResource\Pages;
+use App\Filament\Resources\LanguageLevelResource\RelationManagers;
+use App\Models\LanguageLevel;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class LanguageTitleResource extends Resource
+class LanguageLevelResource extends Resource
 {
-    protected static ?string $model = LanguageTitle::class;
+    protected static ?string $model = LanguageLevel::class;
 
     protected static ?string $navigationGroup = 'Settings';
 
-    protected static ?int $navigationSort = 0;
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
@@ -66,10 +66,10 @@ class LanguageTitleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListLanguageTitles::route('/'),
-            'create' => Pages\CreateLanguageTitle::route('/create'),
-            'view' => Pages\ViewLanguageTitle::route('/{record}'),
-            'edit' => Pages\EditLanguageTitle::route('/{record}/edit'),
+            'index' => Pages\ListLanguageLevels::route('/'),
+            'create' => Pages\CreateLanguageLevel::route('/create'),
+            'view' => Pages\ViewLanguageLevel::route('/{record}'),
+            'edit' => Pages\EditLanguageLevel::route('/{record}/edit'),
         ];
     }
 }
