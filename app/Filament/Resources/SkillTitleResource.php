@@ -19,8 +19,6 @@ class SkillTitleResource extends Resource
 
     protected static ?string $navigationGroup = 'Settings';
 
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
-
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();

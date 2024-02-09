@@ -49,10 +49,17 @@ class ShareResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('token')
-                    ->label(__('Token'))
+                    ->label(__('Share token'))
+                    ->formatStateUsing(fn($state) => '<a href="'.route('view.share', $state).'" target="_blank">
+                            '.__('View CV').'
+                        </a>'
+                    )
                     ->extraAttributes(['class' => 'text-sm'])
                     ->weight('bold')
-                    ->color('primary'),
+                    ->color('primary')
+                    ->icon('heroicon-o-clipboard-document-list')
+                    ->html()
+                    ->copyable(),
                 Tables\Columns\TextColumn::make('template')
                     ->badge(),
             ])

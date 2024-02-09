@@ -19,8 +19,6 @@ class LanguageTitleResource extends Resource
 
     protected static ?int $navigationSort = 0;
 
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
-
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();
