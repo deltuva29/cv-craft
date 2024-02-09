@@ -1,5 +1,5 @@
 {
-  "You are logged in, <span class=\"text-secondary\">:name</span>!": "Вы вошли как <span class=\"text-secondary\">:name</span>!",
+  "You are logged in, <span class=\"text-white font-bold\">:name</span>!": "Вы вошли как <span class=\"text-white font-bold\">:name</span>!",
   "Dashboard": "Главная",
   "Biography": "Биография",
   "Add your biography.": "Добавьте вашу биографию.",

@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Profile') }}
         </h2>
+        <h3 class="text-gray-300">
+            {{ __('Update your account\'s profile information and email address.') }}
+        </h3>
     </x-slot>
 
     <div class="py-12">

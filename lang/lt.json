@@ -1,5 +1,5 @@
 {
-  "You are logged in, <span class=\"text-secondary\">:name</span>!": "Jūs prisijungėte kaip <span class=\"text-secondary\">:name</span>!",
+  "You are logged in, <span class=\"text-white font-bold\">:name</span>!": "Jūs prisijungėte kaip <span class=\"text-white font-bold\">:name</span>!",
   "Dashboard": "Pagrindinis",
   "Biography": "Biografija",
   "Add your biography.": "Papildykite savo biografiją.",

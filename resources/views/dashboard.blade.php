@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Dashboard') }}
         </h2>
-        <h3 class="text-gray-600 dark:text-gray-400">
-            {!! __('You are logged in, <span class="text-secondary">:name</span>!', [
+        <h3 class="text-gray-300">
+            {!! __('You are logged in, <span class="text-white font-bold">:name</span>!', [
                 'name' => $user->name
             ]) !!}
         </h3>
