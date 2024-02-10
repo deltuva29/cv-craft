@@ -55,7 +55,6 @@ class UpdateProfileContactsModal extends ModalComponent implements HasForms
                 PhoneInput::make('phone')
                     ->label(__('Phone number'))
                     ->initialCountry('lt')
-                    ->inlineSuffix('+370')
                     ->nullable(),
                 TextInput::make('linkedin')
                     ->label(__('LinkedIn URL'))
@@ -63,7 +62,7 @@ class UpdateProfileContactsModal extends ModalComponent implements HasForms
                     ->nullable(),
                 TextInput::make('website')
                     ->label(__('Website URL'))
-                    ->url('https://')
+                    ->url()
                     ->suffixIcon('heroicon-m-globe-alt')
                     ->nullable(),
             ])
