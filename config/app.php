@@ -88,9 +88,9 @@ return [
     'locales' => ['en', 'lt', 'ru'],
 
     'locale_labels' => [
-        'en' => 'English',
-        'lt' => 'Lietuvių',
-        'ru' => 'Rusų',
+        'en' => 'Anglų (English)',
+        'lt' => 'Lietuvių (Lithuanian)',
+        'ru' => 'Russian (Русский)',
     ],
 
     /*

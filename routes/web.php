@@ -16,14 +16,14 @@ use Livewire\Volt\Volt;
 
 Volt::route('/', 'pages.home.index')->name('home');
 
-Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
-Route::view('biography', 'biography')->middleware(['auth', 'verified'])->name('biography');
-Route::view('experiences', 'experiences')->middleware(['auth', 'verified'])->name('experiences');
-Route::view('educations', 'educations')->middleware(['auth', 'verified'])->name('educations');
-Route::view('languages', 'languages')->middleware(['auth', 'verified'])->name('languages');
-Route::view('certificates', 'certificates')->middleware(['auth', 'verified'])->name('certificates');
-Route::view('shares', 'shares')->middleware(['auth', 'verified'])->name('shares');
-Route::view('profile', 'profile')->middleware(['auth'])->name('profile');
+Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified', 'setLocale'])->name('dashboard');
+Route::view('biography', 'biography')->middleware(['auth', 'verified', 'setLocale'])->name('biography');
+Route::view('experiences', 'experiences')->middleware(['auth', 'verified', 'setLocale'])->name('experiences');
+Route::view('educations', 'educations')->middleware(['auth', 'verified', 'setLocale'])->name('educations');
+Route::view('languages', 'languages')->middleware(['auth', 'verified', 'setLocale'])->name('languages');
+Route::view('certificates', 'certificates')->middleware(['auth', 'verified', 'setLocale'])->name('certificates');
+Route::view('shares', 'shares')->middleware(['auth', 'verified', 'setLocale'])->name('shares');
+Route::view('profile', 'profile')->middleware(['auth', 'setLocale'])->name('profile');
 
 Route::get('/view/{share:token}', App\Http\Controllers\Profile\Shares\ShowController::class)->name('view.share');
 

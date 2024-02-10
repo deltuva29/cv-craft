@@ -33,6 +33,7 @@ class User extends Authenticatable implements FilamentUser, HasForms
         'name',
         'email',
         'password',
+        'language',
     ];
 
     /**
