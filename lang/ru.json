@@ -94,5 +94,9 @@
   "Language": "Язык",
   "Level": "Уровень",
   "New certificate": "Новый сертификат",
-  "Add a new certificate to your profile.": "Добавьте новый сертификат в свой профиль."
+  "Add a new certificate to your profile.": "Добавьте новый сертификат в свой профиль.",
+  "Offer a job": "Предложить работу",
+  "Graduated in :year": "Окончил(а) в :year",
+  "Present": "По настоящее время",
+  "Received in :year": "Получено в :year"
 }
