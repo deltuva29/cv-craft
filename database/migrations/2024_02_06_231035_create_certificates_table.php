@@ -14,7 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->uuid()->unique();
             $table->string('name')->nullable();
-            $table->year('received_year')->nullable();
+            $table->string('description')->nullable();
+            $table->date('started_at')->nullable();
+            $table->date('received_at')->nullable();
             $table->foreignId('profile_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

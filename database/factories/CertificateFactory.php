@@ -20,7 +20,9 @@ class CertificateFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence,
-            'received_year' => $this->faker->year,
+            'description' => $this->faker->sentence,
+            'started_at' => $this->faker->date,
+            'received_at' => $this->faker->date,
             'profile_id' => Profile::factory(),
         ];
     }

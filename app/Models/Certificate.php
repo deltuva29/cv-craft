@@ -19,14 +19,17 @@ class Certificate extends Model
     protected $fillable = [
         'uuid',
         'name',
+        'description',
+        'started_at',
         'profile_id',
-        'received_year',
+        'received_at',
     ];
 
     /**
      * @var array<string, string>
      */
     protected $casts = [
-        'received_year' => 'string',
+        'started_at' => 'date',
+        'received_at' => 'date',
     ];
 }

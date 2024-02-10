@@ -3,7 +3,8 @@
 namespace App\Livewire\UiElements\Modals\Profile;
 
 use App\Models\Profile;
-use Filament\Forms\Components\Select;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -43,12 +44,22 @@ class CreateProfileCertificateModal extends ModalComponent implements HasForms
             ->schema([
                 TextInput::make('name')
                     ->label(__('Title'))
-                    ->required(),
-                Select::make('received_year')
-                    ->label(__('Received year'))
-                    ->options(array_combine(range(now()->year, 1900), range(now()->year, 1900)))
                     ->required()
-                    ->searchable(),
+                    ->columnSpan('full'),
+                DatePicker::make('started_at')
+                    ->label(__('Started'))
+                    ->required(),
+                DatePicker::make('received_at')
+                    ->label(__('Received'))
+                    ->required(),
+                MarkdownEditor::make('description')
+                    ->label(__(''))
+                    ->toolbarButtons([
+                        'redo',
+                        'undo',
+                    ])
+                    ->nullable()
+                    ->columnSpan('full'),
             ])->columns()
             ->statePath('data')
             ->model($this->profile);

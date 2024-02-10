@@ -42,12 +42,22 @@ new class extends Component implements HasForms {
                     ->schema([
                         TextInput::make('name')
                             ->label(__('Title'))
-                            ->required(),
-                        Select::make('received_year')
-                            ->label(__('Received year'))
-                            ->options(array_combine(range(now()->year, 1900), range(now()->year, 1900)))
                             ->required()
-                            ->searchable(),
+                            ->columnSpan('full'),
+                        DatePicker::make('started_at')
+                            ->label(__('Started'))
+                            ->required(),
+                        DatePicker::make('received_at')
+                            ->label(__('Received'))
+                            ->required(),
+                        MarkdownEditor::make('description')
+                            ->label(__(''))
+                            ->toolbarButtons([
+                                'redo',
+                                'undo',
+                            ])
+                            ->nullable()
+                            ->columnSpan('full'),
                     ])->addActionLabel(__('+ Add Certificates'))
                     ->columns()
                     ->reorderable()

@@ -98,5 +98,8 @@
   "Offer a job": "Предложить работу",
   "Graduated in :year": "Окончил(а) в :year",
   "Present": "По настоящее время",
-  "Received in :year": "Получено в :year"
+  "Received in :year": "Получено в :year",
+  "Started year": "Год начала",
+  "Started": "Начало",
+  "Received": "Получено"
 }

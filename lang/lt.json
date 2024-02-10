@@ -98,5 +98,8 @@
   "Offer a job": "Pasiūlytį darbą",
   "Graduated in :year": "Baigimo metai :year",
   "Present": "Iki dabar",
-  "Received in :year": "Gavimo metai :year"
+  "Received in :year": "Gavimo metai :year",
+  "Started year": "Pradžios metai",
+  "Started": "Pradžios data",
+  "Received": "Gavimo data"
 }
