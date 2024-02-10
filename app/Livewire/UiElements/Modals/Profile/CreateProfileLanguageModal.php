@@ -11,9 +11,11 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
+use Usernotnull\Toast\Concerns\WireToast;
 
 class CreateProfileLanguageModal extends ModalComponent implements HasForms
 {
+    use WireToast;
     use InteractsWithForms;
 
     public ?array $data = [];
@@ -71,6 +73,7 @@ class CreateProfileLanguageModal extends ModalComponent implements HasForms
     {
         $this->profile->languages()
             ->create($this->form->getState());
+        toast()->success(__('Saved.'))->push();
 
         $this->closeModal();
         $this->dispatch('profile-updated');

@@ -16,6 +16,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen overflow-y-scroll font-sans antialiased soft-scrollbar">
+<livewire:toasts/>
+
 <div class="min-h-screen bg-tertiary dark:bg-secondary-800">
     @if (auth()->check())
         <livewire:layout.navigation/>

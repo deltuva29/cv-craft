@@ -7,8 +7,10 @@ use App\Models\Profile;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 use Livewire\WithFileUploads;
+use Usernotnull\Toast\Concerns\WireToast;
 
 new class extends Component {
+    use WireToast;
     use WithFileUploads;
 
     public Profile $profile;
@@ -40,6 +42,8 @@ new class extends Component {
                     ->sanitizingFileName($sanitizeFileName)
                     ->usingFileName($fileName)
                     ->toMediaCollection('avatar', 'avatars');
+
+                toast()->success(__('Updated.'))->push();
             }
         } catch (Exception $ex) {
             session()->flash('error', $ex->getMessage());
@@ -51,6 +55,8 @@ new class extends Component {
         try {
             if ($this->profile->hasMedia('avatar')) {
                 $this->profile->clearMediaCollection('avatar');
+
+                toast()->success(__('Removed.'))->push();
             }
         } catch (Exception $ex) {
             session()->flash('error', $ex->getMessage());

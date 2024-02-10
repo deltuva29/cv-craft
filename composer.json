@@ -20,6 +20,7 @@
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
         "spatie/laravel-medialibrary": "^10.0.0",
+        "usernotnull/tall-toasts": "^2.0",
         "wire-elements/modal": "^2.0",
         "ysfkaya/filament-phone-input": "^2.3"
     },

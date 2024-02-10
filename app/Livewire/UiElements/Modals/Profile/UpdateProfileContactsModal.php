@@ -9,10 +9,12 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
+use Usernotnull\Toast\Concerns\WireToast;
 use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
 
 class UpdateProfileContactsModal extends ModalComponent implements HasForms
 {
+    use WireToast;
     use InteractsWithForms;
 
     public ?array $data = [];
@@ -75,7 +77,10 @@ class UpdateProfileContactsModal extends ModalComponent implements HasForms
     public function save(): void
     {
         $this->profile->update($this->form->getState());
+        toast()->success(__('Saved.'))->push();
+
         $this->closeModal();
+
         $this->dispatch('profile-updated');
     }
 }

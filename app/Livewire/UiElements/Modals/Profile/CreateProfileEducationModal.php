@@ -13,9 +13,11 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
+use Usernotnull\Toast\Concerns\WireToast;
 
 class CreateProfileEducationModal extends ModalComponent implements HasForms
 {
+    use WireToast;
     use InteractsWithForms;
 
     public ?array $data = [];
@@ -92,6 +94,7 @@ class CreateProfileEducationModal extends ModalComponent implements HasForms
     {
         $this->profile->educations()
             ->create($this->form->getState());
+        toast()->success(__('Saved.'))->push();
 
         $this->closeModal();
         $this->dispatch('profile-updated');

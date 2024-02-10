@@ -17,9 +17,11 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
+use Usernotnull\Toast\Concerns\WireToast;
 
 class CreateSkillModal extends ModalComponent implements HasForms
 {
+    use WireToast;
     use InteractsWithForms;
     use WithSkills;
 
@@ -97,6 +99,7 @@ class CreateSkillModal extends ModalComponent implements HasForms
             );
         }
 
+        toast()->success(__('Saved.'))->push();
         $this->closeModal();
         $this->dispatch('profile-updated');
     }

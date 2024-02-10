@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Livewire\Volt\Component;
+use Usernotnull\Toast\Concerns\WireToast;
 
 new class extends Component {
+    use WireToast;
+
     public string $name = '';
     public string $email = '';
 
@@ -42,6 +45,7 @@ new class extends Component {
         }
 
         $user->save();
+        toast()->success(__('Saved.'))->push();
 
         $this->dispatch('profile-information-updated', name: $user->name);
     }

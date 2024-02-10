@@ -101,5 +101,7 @@
   "Received in :year": "Gavimo metai :year",
   "Started year": "Pradžios metai",
   "Started": "Pradžios data",
-  "Received": "Gavimo data"
+  "Received": "Gavimo data",
+  "Updated.": "Atnaujinta",
+  "Removed.": "Pašalinta"
 }

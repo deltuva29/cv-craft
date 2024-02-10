@@ -15,8 +15,10 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Livewire\Volt\Component;
+use Usernotnull\Toast\Concerns\WireToast;
 
 new class extends Component implements HasForms {
+    use WireToast;
     use InteractsWithForms;
 
     public ?array $data = [];
@@ -48,6 +50,7 @@ new class extends Component implements HasForms {
         $this->validate();
         $this->profile->shares()->create($this->form->getState());
         $this->form->fill();
+        toast()->success(__('Saved.'))->push();
 
         $this->dispatch('profile-updated');
     }
@@ -70,10 +73,6 @@ new class extends Component implements HasForms {
                     </svg> {{ __('Saving..') }}
                 </span>
             </x-primary-button>
-
-            <x-action-message class="me-3" on="profile-updated">
-                {{ __('Saved.') }}
-            </x-action-message>
         </div>
     </form>
 </div>

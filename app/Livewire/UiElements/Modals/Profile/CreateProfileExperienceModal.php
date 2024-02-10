@@ -18,9 +18,11 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
+use Usernotnull\Toast\Concerns\WireToast;
 
 class CreateProfileExperienceModal extends ModalComponent implements HasForms
 {
+    use WireToast;
     use InteractsWithForms;
 
     public ?array $data = [];
@@ -106,6 +108,7 @@ class CreateProfileExperienceModal extends ModalComponent implements HasForms
     {
         $this->profile->experiences()
             ->create($this->form->getState());
+        toast()->success(__('Saved.'))->push();
 
         $this->closeModal();
         $this->dispatch('profile-updated');

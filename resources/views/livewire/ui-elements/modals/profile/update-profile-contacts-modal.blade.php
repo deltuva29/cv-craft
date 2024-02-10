@@ -20,10 +20,6 @@
                     </svg> {{ __('Saving..') }}
                 </span>
                 </x-primary-button>
-
-                <x-action-message class="me-3" on="profile-updated">
-                    {{ __('Saved.') }}
-                </x-action-message>
             </div>
         </form>
     </x-modal.body>

@@ -101,5 +101,7 @@
   "Received in :year": "Получено в :year",
   "Started year": "Год начала",
   "Started": "Начало",
-  "Received": "Получено"
+  "Received": "Получено",
+  "Updated.": "Обновлено",
+  "Removed.": "Удалено"
 }

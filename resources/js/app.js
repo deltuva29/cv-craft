@@ -1,9 +1,12 @@
 import './bootstrap';
+import ToastComponent from '../../vendor/usernotnull/tall-toasts/resources/js/tall-toasts';
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+window.Alpine.plugin(ToastComponent);
 
 AOS.init();
 
