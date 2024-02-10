@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Profile\Shares\ShowController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -16,15 +17,20 @@ use Livewire\Volt\Volt;
 
 Volt::route('/', 'pages.home.index')->name('home');
 
-Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified', 'setLocale'])->name('dashboard');
-Route::view('biography', 'biography')->middleware(['auth', 'verified', 'setLocale'])->name('biography');
-Route::view('experiences', 'experiences')->middleware(['auth', 'verified', 'setLocale'])->name('experiences');
-Route::view('educations', 'educations')->middleware(['auth', 'verified', 'setLocale'])->name('educations');
-Route::view('languages', 'languages')->middleware(['auth', 'verified', 'setLocale'])->name('languages');
-Route::view('certificates', 'certificates')->middleware(['auth', 'verified', 'setLocale'])->name('certificates');
-Route::view('shares', 'shares')->middleware(['auth', 'verified', 'setLocale'])->name('shares');
-Route::view('profile', 'profile')->middleware(['auth', 'setLocale'])->name('profile');
+Route::middleware(['auth', 'verified', 'setLocale'])->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::view('biography', 'biography')->name('biography');
+    Route::view('experiences', 'experiences')->name('experiences');
+    Route::view('educations', 'educations')->name('educations');
+    Route::view('languages', 'languages')->name('languages');
+    Route::view('certificates', 'certificates')->name('certificates');
+    Route::view('shares', 'shares')->name('shares');
 
-Route::get('/view/{share:token}', App\Http\Controllers\Profile\Shares\ShowController::class)->name('view.share');
+    Route::view('profile', 'profile')->middleware(['auth', 'setLocale'])->name('profile');
+});
 
+Route::get('/view/{share:token}', ShowController::class)->name('view.share');
+
+// Include auth routes
 require __DIR__.'/auth.php';
+
