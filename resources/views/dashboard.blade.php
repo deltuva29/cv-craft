@@ -1,34 +1,27 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-        <h3 class="text-gray-300">
+        <h2 class="text-gray-300">
             {!! __('You are logged in, <span class="text-white font-bold">:name</span>!', [
                 'name' => $user->name
             ]) !!}
-        </h3>
+        </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:contacts.show
-                    :profile="$profile"
-            />
-
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex justify-between items-center">
                         <div>
                             <x-header-title
-                                    title="{{ __('Skills') }}"
-                                    subtitle="{{ __('Manage your skills.') }}"
+                                    title="{{ __('My CV') }}"
+                                    subtitle="{{ __('Manage your CV.') }}"
                             />
                         </div>
 
                         <x-primary-button
                                 onclick="Livewire.dispatch('openModal', {
-                                    component: 'ui-elements.modals.skill.create-skill-modal',
+                                    component: 'ui-elements.modals.profile.create-profile-resume-modal',
                                     arguments: {
                                         profile: {{ $profile }}
                                     }
@@ -38,15 +31,14 @@
                                 <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>
                             </svg>
                             <span class="hidden md:block">
-                                {{ __('Add skills') }}
+                                {{ __('New resume') }}
                             </span>
                         </x-primary-button>
                     </div>
 
                     <hr class="my-4">
-                    <livewire:skills.show
+                    <livewire:resumes.show
                             :profile="$profile"
-                            lazy="on-load"
                     />
                 </div>
             </div>

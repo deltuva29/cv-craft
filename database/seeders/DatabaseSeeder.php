@@ -52,6 +52,10 @@ class DatabaseSeeder extends Seeder
             'profile_id' => $user->id,
         ]);
 
+//        Resume::factory(5)->create([
+//            'profile_id' => $user->id,
+//        ]);
+
 //        Share::factory(305)->create([
 //            'profile_id' => $user->id,
 //        ]);

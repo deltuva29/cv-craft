@@ -74,7 +74,7 @@
   "Add skills": "Pridėti įgūdžių",
   "Save": "Išsaugoti",
   "Saving..": "Išsaugoma..",
-  "Saved.": "Išsaugota.",
+  "Saved.": "Išsaugota",
   "Log Out": "Atsijungti",
   "Add your learned certificates.": "Papildykite savo sertifikatus.",
   "Title": "Pavadinimas",
@@ -105,5 +105,11 @@
   "Updated.": "Atnaujinta",
   "Removed.": "Pašalinta",
   "Settings": "Nustatymai",
-  "Update your account settings.": "Atnaujinkite savo paskyros nustatymus."
+  "Update your account settings.": "Atnaujinkite savo paskyros nustatymus.",
+  "My CV": "Mano CV",
+  "Manage your CV.": "Gyvenimo aprašymai",
+  "You have not added any resumes yet.": "Jūs dar nepridėjote jokių gyvenimo aprašymų.",
+  "Add Resume": "Pridėti CV",
+  "New resume": "Naujas CV",
+  "Create a new resume.": "Sukurkite naują."
 }

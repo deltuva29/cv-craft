@@ -19,12 +19,9 @@ Volt::route('/', 'pages.home.index')->name('home');
 
 Route::middleware(['auth', 'verified', 'setLocale'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
-    Route::view('biography', 'biography')->name('biography');
-    Route::view('experiences', 'experiences')->name('experiences');
-    Route::view('educations', 'educations')->name('educations');
-    Route::view('languages', 'languages')->name('languages');
-    Route::view('certificates', 'certificates')->name('certificates');
     Route::view('shares', 'shares')->name('shares');
+
+    Volt::route('/resumes/craft/{resume:id}', 'resumes.craft.show')->name('resumes.show');
 
     Route::view('profile', 'profile')->middleware(['auth', 'setLocale'])->name('profile');
 });

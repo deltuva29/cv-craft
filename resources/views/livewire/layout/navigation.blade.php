@@ -51,41 +51,6 @@ new class extends Component {
 
         <div class="mt-3 space-y-1">
             <x-responsive-nav-link
-                    :href="route('biography')"
-                    @click="open = !open"
-                    wire:navigate
-            >
-                {{ __('Biography') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link
-                    :href="route('experiences')"
-                    @click="open = !open"
-                    wire:navigate
-            >
-                {{ __('Experiences') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link
-                    :href="route('educations')"
-                    @click="open = !open"
-                    wire:navigate
-            >
-                {{ __('Educations') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link
-                    :href="route('languages')"
-                    @click="open = !open"
-                    wire:navigate
-            >
-                {{ __('Languages') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link
-                    :href="route('certificates')"
-                    @click="open = !open"
-                    wire:navigate
-            >
-                {{ __('Certificates') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link
                     :href="route('shares')"
                     @click="open = !open"
                     wire:navigate
@@ -136,34 +101,6 @@ new class extends Component {
                                 wire:navigate
                         >
                             {{ __('Dashboard') }}
-                        </x-nav-link>
-                        <x-nav-link
-                                :href="route('biography')"
-                                :active="request()->routeIs('biography')"
-                                wire:navigate
-                        >
-                            {{ __('Biography') }}
-                        </x-nav-link>
-                        <x-nav-link
-                                :href="route('experiences')"
-                                :active="request()->routeIs('experiences')"
-                                wire:navigate
-                        >
-                            {{ __('Experiences') }}
-                        </x-nav-link>
-                        <x-nav-link
-                                :href="route('educations')"
-                                :active="request()->routeIs('educations')"
-                                wire:navigate
-                        >
-                            {{ __('Educations') }}
-                        </x-nav-link>
-                        <x-nav-link
-                                :href="route('languages')"
-                                :active="request()->routeIs('languages')"
-                                wire:navigate
-                        >
-                            {{ __('Languages') }}
                         </x-nav-link>
                         <x-nav-link
                                 :href="route('shares')"

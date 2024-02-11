@@ -43,9 +43,20 @@ class Profile extends Model implements HasMedia
             ->performOnCollections('avatar');
     }
 
+    /**
+     * @return BelongsTo<User>
+     */
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * @return HasMany<Resume>
+     */
+    public function resumes(): HasMany
+    {
+        return $this->hasMany(Resume::class, 'profile_id');
     }
 
     /**

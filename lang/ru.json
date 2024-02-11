@@ -74,7 +74,7 @@
   "Add skills": "Добавить навыки",
   "Save": "Сохранить",
   "Saving..": "Сохранение..",
-  "Saved.": "Сохранено.",
+  "Saved.": "Сохранено",
   "Log Out": "Выйти",
   "Add your learned certificates.": "Добавьте ваши сертификаты.",
   "Title": "Название",
@@ -105,5 +105,10 @@
   "Updated.": "Обновлено",
   "Removed.": "Удалено",
   "Settings": "Настройки",
-  "Update your account settings.": "Обновите настройки вашего аккаунта."
+  "Update your account settings.": "Обновите настройки вашего аккаунта.",
+  "My CV": "Мой резюме",
+  "Manage your CV.": "Управляйте вашим резюме.",
+  "You have not added any resumes yet.": "Вы ещё не добавили ни один резюме.",
+  "New resume": "Новый резюме",
+  "Create a new resume.": "Создайте новый резюме."
 }
