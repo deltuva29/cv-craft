@@ -21,7 +21,7 @@ Route::middleware(['auth', 'verified', 'setLocale'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::view('shares', 'shares')->name('shares');
 
-    Volt::route('/resumes/craft/{resume:id}', 'resumes.craft.show')->name('resumes.show');
+    Volt::route('/resumes/edit/{resume:id}', 'resumes.edit.show')->name('resumes.edit.show');
 
     Route::view('profile', 'profile')->middleware(['auth', 'setLocale'])->name('profile');
 });

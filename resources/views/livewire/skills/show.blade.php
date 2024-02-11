@@ -13,7 +13,6 @@ new class extends Component {
 
     public function mount(Profile $profile): void
     {
-        sleep(1);
         $this->profile = $profile;
     }
 

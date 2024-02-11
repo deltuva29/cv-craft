@@ -11,7 +11,7 @@
             {{ $resume->language }}
         </span>
     </span>
-    <a href="{{ route('resumes.show', $resume) }}"
+    <a href="{{ route('resumes.edit.show', $resume) }}"
        class="text-lg font-bold leading-6 text-secondary"
        wire:navigate
     >
