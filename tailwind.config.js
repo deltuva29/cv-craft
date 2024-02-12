@@ -26,17 +26,8 @@ export default {
     ],
     theme: {
         fontFamily: {
-            sans: ['Varela Round', ...defaultTheme.fontFamily.sans],
+            sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
         },
-        // fontSize: {
-        //     xs: ['16px', '29px'],
-        //     sm: ['18px', '20px'],
-        //     base: ['20px', '39px'],
-        //     lg: ['24px', '36px'],
-        //     xl: ['30px', '46px'],
-        //     '2xl': ['45px', '64px'],
-        //     '3xl': ['55px', '64px'],
-        // },
         screens: {
             'sm': '640px',
             'md': '768px',
@@ -54,7 +45,7 @@ export default {
         },
         extend: {
             colors: {
-                primary: '#000000',
+                primary: '#175f83',
                 secondary: '#279fdb',
                 tertiary: '#F0F8FF',
                 light: '#ffffff',

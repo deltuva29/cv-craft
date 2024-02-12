@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Resume;
+use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component {
@@ -9,6 +10,12 @@ new class extends Component {
     public function mount(Resume $resume): void
     {
         $this->resume = $resume;
+    }
+
+    #[On('resume-updated')]
+    public function updateResume(): void
+    {
+        $this->dispatch('$refresh');
     }
 }; ?>
 
@@ -28,7 +35,10 @@ new class extends Component {
                 <div>
                     <h3 class="text-secondary font-semibold text-xl leading-tight truncate">
                         {{ $resume->name }}
-                        <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-sm text-xs font-medium bg-blue-100 text-blue-800 uppercase">
+                        <x-status-badge
+                                :status="$resume->public"
+                        />
+                        <span class="inline-flex items-center px-2.5 py-1.5 rounded-sm text-sm font-medium bg-blue-100 text-blue-800 uppercase">
                            {{ $resume->language }}
                         </span>
                     </h3>
@@ -36,8 +46,8 @@ new class extends Component {
 
                 <x-primary-button
                         onclick="Livewire.dispatch('openModal', {
-                                component: 'ui-elements.modals.user.update-user-modal',
-                                arguments: { profile: {{ $profile }}
+                                component: 'ui-elements.modals.profile.update-profile-resume-modal',
+                                arguments: { resume: {{ $resume }}
                             }
                         })"
                         class="!bg-transparent !border-none group !focus-none !p-0"

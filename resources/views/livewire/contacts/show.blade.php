@@ -71,7 +71,7 @@ new class extends Component {
 }; ?>
 
 <div>
-    <div class="bg-gradient-to-r from-white from-40% to-secondary to-280%  dark:bg-gray-800 mb-6 overflow-hidden shadow-sm sm:rounded-lg">
+    <div class="bg-white dark:bg-gray-800 mb-6 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-100 relative">
             <div class="absolute top-6 right-6">
                 <x-primary-button

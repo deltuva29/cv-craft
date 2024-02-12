@@ -71,7 +71,7 @@
                     @endif
                 </div>
 
-                <div class="w-full p-6 rounded-lg bg-gradient-to-r from-white from-40% to-secondary to-280% shadow-lg">
+                <div class="w-full p-6 rounded-lg bg-white shadow-lg">
 
                     <h2 class="text-xl font-semibold mb-2">{{ __('Biography') }}</h2>
                     <hr class="my-4">

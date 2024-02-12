@@ -112,5 +112,8 @@
   "New resume": "Новый резюме",
   "Create a new resume.": "Создайте новый резюме.",
   "Edit resume": "Редактировать резюме",
-  "Update your resume.": "Обновите ваш резюме."
+  "Update your resume.": "Обновите ваш резюме.",
+  "CV Language": "Язык резюме",
+  "Public": "Публичный",
+  "Not-Public": "Не публичный"
 }

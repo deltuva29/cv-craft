@@ -113,5 +113,8 @@
   "New resume": "Naujas CV",
   "Create a new resume.": "Sukurkite naują.",
   "Edit resume": "Redaguoti CV",
-  "Update your resume.": "Keiskite savo gyvenimo informaciją."
+  "Update your resume.": "Keiskite savo gyvenimo informaciją.",
+  "CV Language": "CV Kalba",
+  "Public": "Rodomas",
+  "Not-Public": "Nerodomas"
 }

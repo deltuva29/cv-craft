@@ -15,7 +15,11 @@ new class extends Component {
     }
 }; ?>
 
-<div x-data="{ open: false }"
+<div x-data="{
+        open: false,
+        isSticky: false
+    }"
+     @scroll.window="isSticky = window.scrollY > 50"
      @resize.window="open = false"
      @nav.window="open = !open"
 >
@@ -78,9 +82,10 @@ new class extends Component {
         </div>
     </aside>
 
-    <nav x-data="{ open: false }"
+    <nav :class="{ 'fixed top-0 left-0 w-full z-50 bg-secondary shadow': isSticky }"
+         class="!bg-primary border-b border-white dark:border-gray-700 transition-all duration-300"
+         x-data="{ open: false }"
          @nav.window="open = !open"
-         class="bg-primary dark:bg-primary border-b border-white dark:border-gray-700"
     >
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
