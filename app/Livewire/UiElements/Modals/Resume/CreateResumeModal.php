@@ -1,13 +1,10 @@
 <?php
 
-declare(strict_types=1);
+namespace App\Livewire\UiElements\Modals\Resume;
 
-namespace App\Livewire\UiElements\Modals\Profile;
-
-use App\Models\Resume;
+use App\Models\Profile;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -15,7 +12,7 @@ use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
 use Usernotnull\Toast\Concerns\WireToast;
 
-class UpdateProfileResumeModal extends ModalComponent implements HasForms
+class CreateResumeModal extends ModalComponent implements HasForms
 {
     use WireToast;
     use InteractsWithForms;
@@ -24,39 +21,28 @@ class UpdateProfileResumeModal extends ModalComponent implements HasForms
 
     public string $uuid;
 
-    public Resume $resume;
+    public Profile $profile;
 
     public static function modalMaxWidth(): string
     {
         return '2xl';
     }
 
-    public function mount(Resume $resume): void
+    public function mount(Profile $profile): void
     {
-        $this->resume = $resume;
-        $this->form->fill(
-            $this->resume->only([
-                'name',
-                'description',
-                'language',
-                'public',
-            ])
-        );
+        $this->profile = $profile;
+        $this->form->fill();
     }
 
     public function render(): View
     {
-        return view('livewire.ui-elements.modals.profile.update-profile-resume-modal');
+        return view('livewire.ui-elements.modals.resume.create-resume-modal');
     }
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Toggle::make('public')
-                    ->label(fn($state) => $state ? __('Public') : __('Not-Public'))
-                    ->onColor('success')
-                    ->required(),
                 TextInput::make('name')
                     ->label(__('Title'))
                     ->required(),
@@ -64,7 +50,7 @@ class UpdateProfileResumeModal extends ModalComponent implements HasForms
                     ->label(__('Description'))
                     ->required(),
                 Select::make('language')
-                    ->label(__('CV Language'))
+                    ->label(__('Language'))
                     ->prefixIcon('heroicon-s-flag')
                     ->options(
                         config('app.locale_labels')
@@ -73,15 +59,17 @@ class UpdateProfileResumeModal extends ModalComponent implements HasForms
                     ->searchable()
                     ->preload(),
             ])
-            ->statePath('data');
+            ->statePath('data')
+            ->model($this->profile);
     }
 
-    public function save(): void
+    public function create(): void
     {
-        $this->resume->update($this->form->getState());
+        $this->profile->resumes()
+            ->create($this->form->getState());
         toast()->success(__('Saved.'))->push();
 
         $this->closeModal();
-        $this->dispatch('resume-updated');
+        $this->dispatch('profile-updated');
     }
 }

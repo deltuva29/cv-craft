@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->uuid()->unique();
             $table->text('description')->nullable();
             $table->boolean('current')->default(false);
-            $table->foreignId('profile_id')->nullable()->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('resume_id')->nullable()->index()->constrained()->cascadeOnDelete();
             $table->foreignId('job_title_id')->nullable()->index()->constrained()->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->index()->constrained()->cascadeOnDelete();
             $table->date('started_at');

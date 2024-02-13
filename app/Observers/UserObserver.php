@@ -14,12 +14,6 @@ class UserObserver
      */
     public function created(User $user): void
     {
-        $user->profile()->create([
-            'bio' => 'I am a Software Engineer',
-            'position' => 'Software Engineer',
-            'location' => 'Lithuania, Ukmerge',
-            'linkedin' => 'desoftlab',
-            'website' => 'https://desoftlab.com',
-        ]);
+        $user->profile()->create();
     }
 }

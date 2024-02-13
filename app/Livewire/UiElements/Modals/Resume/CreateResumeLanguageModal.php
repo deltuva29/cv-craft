@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Livewire\UiElements\Modals\Profile;
+declare(strict_types=1);
 
-use App\Models\Profile;
+namespace App\Livewire\UiElements\Modals\Resume;
+
+use App\Models\LanguageLevel;
+use App\Models\LanguageTitle;
+use App\Models\Resume;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -12,7 +15,7 @@ use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
 use Usernotnull\Toast\Concerns\WireToast;
 
-class CreateProfileResumeModal extends ModalComponent implements HasForms
+class CreateResumeLanguageModal extends ModalComponent implements HasForms
 {
     use WireToast;
     use InteractsWithForms;
@@ -21,51 +24,56 @@ class CreateProfileResumeModal extends ModalComponent implements HasForms
 
     public string $uuid;
 
-    public Profile $profile;
+    public Resume $resume;
 
     public static function modalMaxWidth(): string
     {
         return '2xl';
     }
 
-    public function mount(Profile $profile): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $profile;
+        $this->resume = $resume;
         $this->form->fill();
     }
 
     public function render(): View
     {
-        return view('livewire.ui-elements.modals.profile.create-profile-resume-modal');
+        return view('livewire.ui-elements.modals.resume.create-resume-language-modal');
     }
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->label(__('Title'))
-                    ->required(),
-                TextInput::make('description')
-                    ->label(__('Description'))
-                    ->required(),
-                Select::make('language')
+                Select::make('language_title_id')
                     ->label(__('Language'))
-                    ->prefixIcon('heroicon-s-flag')
                     ->options(
-                        config('app.locale_labels')
+                        LanguageTitle::all()
+                            ->pluck('title', 'id')
+                            ->toArray()
                     )
                     ->required()
                     ->searchable()
                     ->preload(),
-            ])
+                Select::make('language_level_id')
+                    ->label(__('Level'))
+                    ->options(
+                        LanguageLevel::all()
+                            ->pluck('title', 'id')
+                            ->toArray()
+                    )
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+            ])->columns()
             ->statePath('data')
-            ->model($this->profile);
+            ->model($this->resume);
     }
 
     public function create(): void
     {
-        $this->profile->resumes()
+        $this->resume->languages()
             ->create($this->form->getState());
         toast()->success(__('Saved.'))->push();
 

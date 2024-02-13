@@ -39,7 +39,7 @@
 
                         <x-primary-button
                                 onclick="Livewire.dispatch('openModal', {
-                                    component: 'ui-elements.modals.profile.create-profile-resume-modal',
+                                    component: 'ui-elements.modals.resume.create-resume-modal',
                                     arguments: {
                                         profile: {{ $profile }}
                                     }

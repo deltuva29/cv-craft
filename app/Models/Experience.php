@@ -21,7 +21,7 @@ class Experience extends Model
         'uuid',
         'description',
         'current',
-        'profile_id',
+        'resume_id',
         'job_title_id',
         'company_id',
         'started_at',

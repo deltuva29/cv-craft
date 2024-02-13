@@ -6,7 +6,7 @@ namespace Database\Factories;
 
 use App\Models\Education;
 use App\Models\Graduation;
-use App\Models\Profile;
+use App\Models\Resume;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +22,7 @@ class EducationFactory extends Factory
     public function definition(): array
     {
         return [
-            'profile_id' => Profile::factory(),
+            'resume_id' => Resume::factory(),
             'graduation_id' => Graduation::factory(),
             'ended_year' => $this->faker->year,
             'specialty' => $this->faker->sentence,

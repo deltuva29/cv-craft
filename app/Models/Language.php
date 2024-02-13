@@ -19,7 +19,7 @@ class Language extends Model
      */
     protected $fillable = [
         'uuid',
-        'profile_id',
+        'resume_id',
         'language_title_id',
         'language_level_id',
     ];

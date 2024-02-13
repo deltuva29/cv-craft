@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Requests\Profile\UpdateProfileAvatarRequest;
 use App\Models\Profile;
+use App\Models\Resume;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 use Livewire\WithFileUploads;
@@ -13,13 +14,13 @@ new class extends Component {
     use WireToast;
     use WithFileUploads;
 
-    public Profile $profile;
+    public Resume $resume;
 
     public $avatar;
 
-    public function mount(Profile $profile): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $profile;
+        $this->resume = $resume;
     }
 
     public function rules(): array
@@ -35,10 +36,10 @@ new class extends Component {
         try {
             if ($this->avatar) {
                 $fileName = strtolower(str_replace(['#', '/', '\\', ' '], '-', $this->avatar->getFilename()));
-                $this->profile->clearMediaCollection('avatar');
+                $this->resume->clearMediaCollection('avatar');
                 $sanitizeFileName = static fn($fileName) => strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
 
-                $this->profile->addMediaFromStream($this->avatar->get())
+                $this->resume->addMediaFromStream($this->avatar->get())
                     ->sanitizingFileName($sanitizeFileName)
                     ->usingFileName($fileName)
                     ->toMediaCollection('avatar', 'avatars');
@@ -53,8 +54,8 @@ new class extends Component {
     public function removeAvatar(): void
     {
         try {
-            if ($this->profile->hasMedia('avatar')) {
-                $this->profile->clearMediaCollection('avatar');
+            if ($this->resume->hasMedia('avatar')) {
+                $this->resume->clearMediaCollection('avatar');
 
                 toast()->success(__('Removed.'))->push();
             }
@@ -77,7 +78,7 @@ new class extends Component {
                 <x-primary-button
                         onclick="Livewire.dispatch('openModal', {
                                 component: 'ui-elements.modals.profile.update-profile-contacts-modal',
-                                arguments: { profile: {{ $profile }}
+                                arguments: { resume: {{ $resume }}
                             }
                         })"
                 >
@@ -93,7 +94,7 @@ new class extends Component {
             <div class="flex flex-col md:flex-row items-start md:items-start">
                 <div class="flex flex-col justify-center items-center mx-auto md:mx-0">
                     <div class="relative">
-                        @if ($profile->hasMedia('avatar'))
+                        @if ($resume->hasMedia('avatar'))
                             <x-secondary-button
                                     wire:click.prevent="removeAvatar"
                                     class="!absolute !top-0 md:!-top-2 !-right-2 !bg-secondary !p-1 !rounded-lg !shadow-md !border-none !cursor-pointer"
@@ -110,20 +111,20 @@ new class extends Component {
                         @endif
                         <img
                                 class="w-32 h-32 object-cover rounded-xl my-4 md:my-0 shadow-2xl"
-                                src="{{ $profile->getAvatar() }}"
-                                alt="{{ $profile->owner->full_name }}"
+                                src="{{ $resume->getAvatar() }}"
+                                alt="{{ $resume->owner->full_name }}"
                         >
                     </div>
                     <div class="mb-6">
                         <h2 class="block md:hidden font-semibold text-2xl text-primary dark:text-gray-200 leading-tight truncate">
-                            {{ $profile->owner->full_name }}
+                            {{ $resume->owner->full_name }}
                         </h2>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row items-center md:items-start">
                     <div class="ml-0 md:ml-9">
                         <h2 class="hidden md:block font-semibold text-2xl text-primary dark:text-gray-200 leading-tight truncate">
-                            {{ $profile->owner->full_name }}
+                            {{ $resume->owner->full_name }}
                         </h2>
                         <div class="font-medium text-lg text-gray-700 dark:text-gray-200 leading-tight">
                             <div class="flex items-center justify-center md:justify-start">
@@ -131,16 +132,16 @@ new class extends Component {
                                     <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"/>
                                     <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"/>
                                 </svg>
-                                <a href="mailto:{{ $profile->owner->email }}"
+                                <a href="mailto:{{ $resume->owner->email }}"
                                    target="_blank"
                                    rel="noopener noreferrer"
                                    class="flex items-center justify-center md:justify-start text-gray-700 hover:text-secondary hover:underline truncate"
                                 >
-                                    {{ $profile->owner->email }}
+                                    {{ $resume->owner->email }}
                                 </a>
                             </div>
                         </div>
-                        @if ($profile->phone)
+                        @if ($resume->phone)
                             <div class="font-medium text-lg text-gray-700 dark:text-gray-200 leading-tight">
                                 <div class="flex items-center justify-start md:justify-start">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-1">

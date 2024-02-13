@@ -1,17 +1,18 @@
 <?php
 
 use App\Models\Profile;
+use App\Models\Resume;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 use Livewire\WithPagination;
 use Illuminate\Contracts\View\View;
 
 new class extends Component {
-    public Profile $profile;
+    public Resume $resume;
 
-    public function mount(Profile $profile): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $profile;
+        $this->resume = $resume;
     }
 
     #[On('profile-updated')]
@@ -27,9 +28,9 @@ new class extends Component {
 }; ?>
 
 <div>
-    @if (!$this->profile->languages->isEmpty())
+    @if (!$this->resume->languages->isEmpty())
         <livewire:profile.update-profile-languages-form
-                :profile="$this->profile"
+                :resume="$this->resume"
         />
     @else
         <x-empty-content

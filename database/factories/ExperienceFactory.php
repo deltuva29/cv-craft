@@ -7,7 +7,7 @@ namespace Database\Factories;
 use App\Models\Company;
 use App\Models\Experience;
 use App\Models\JobTitle;
-use App\Models\Profile;
+use App\Models\Resume;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,7 +25,7 @@ class ExperienceFactory extends Factory
         return [
             'description' => $this->faker->paragraphs(3, true),
             'current' => $current = $this->faker->boolean,
-            'profile_id' => Profile::factory(),
+            'resume_id' => Resume::factory(),
             'job_title_id' => JobTitle::factory(),
             'company_id' => Company::factory(),
             'started_at' => $started = now()->subMonths($this->faker->numberBetween(1, 18)),

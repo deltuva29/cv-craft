@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Certificate;
-use App\Models\Profile;
+use App\Models\Resume;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,7 +23,7 @@ class CertificateFactory extends Factory
             'description' => $this->faker->sentence,
             'started_at' => $this->faker->date,
             'received_at' => $this->faker->date,
-            'profile_id' => Profile::factory(),
+            'resume_id' => Resume::factory(),
         ];
     }
 }

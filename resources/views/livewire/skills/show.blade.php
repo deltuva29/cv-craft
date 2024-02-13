@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Profile;
+use App\Models\Resume;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 use Livewire\WithPagination;
@@ -9,15 +10,15 @@ use Illuminate\Contracts\View\View;
 new class extends Component {
     use WithPagination;
 
-    public Profile $profile;
+    public Resume $resume;
 
-    public function mount(Profile $profile): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $profile;
+        $this->resume = $resume;
     }
 
     #[On('profile-updated')]
-    public function updateShares(): void
+    public function updateSkills(): void
     {
         $this->dispatch('$refresh');
     }
@@ -30,7 +31,7 @@ new class extends Component {
     public function with(): array
     {
         return [
-            'skills' => $this->profile
+            'skills' => $this->resume
                 ->skills()
                 ->get(),
         ];

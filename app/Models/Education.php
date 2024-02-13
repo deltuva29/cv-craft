@@ -24,7 +24,7 @@ class Education extends Model
      */
     protected $fillable = [
         'uuid',
-        'profile_id',
+        'resume_id',
         'graduation_id',
         'ended_year',
         'specialty',

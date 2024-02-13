@@ -21,7 +21,7 @@ class Certificate extends Model
         'name',
         'description',
         'started_at',
-        'profile_id',
+        'resume_id',
         'received_at',
     ];
 

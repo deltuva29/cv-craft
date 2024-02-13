@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire\UiElements\Modals\Profile;
+namespace App\Livewire\UiElements\Modals\Resume;
 
 use App\Models\Graduation;
-use App\Models\Profile;
+use App\Models\Resume;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -17,7 +17,7 @@ use Illuminate\Contracts\View\View;
 use LivewireUI\Modal\ModalComponent;
 use Usernotnull\Toast\Concerns\WireToast;
 
-class CreateProfileEducationModal extends ModalComponent implements HasForms
+class CreateResumeEducationModal extends ModalComponent implements HasForms
 {
     use WireToast;
     use InteractsWithForms;
@@ -26,16 +26,16 @@ class CreateProfileEducationModal extends ModalComponent implements HasForms
 
     public string $uuid;
 
-    public Profile $profile;
+    public Resume $resume;
 
     public static function modalMaxWidth(): string
     {
         return '2xl';
     }
 
-    public function mount(Profile $profile): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $profile;
+        $this->resume = $resume;
         $this->form->fill();
     }
 
@@ -89,12 +89,12 @@ class CreateProfileEducationModal extends ModalComponent implements HasForms
                     ->columnSpan('full'),
             ])->columns()
             ->statePath('data')
-            ->model($this->profile);
+            ->model($this->resume);
     }
 
     public function create(): void
     {
-        $this->profile->educations()
+        $this->resume->educations()
             ->create($this->form->getState());
         toast()->success(__('Saved.'))->push();
 

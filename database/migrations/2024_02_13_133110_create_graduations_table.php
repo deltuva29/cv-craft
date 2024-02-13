@@ -12,14 +12,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('shares', function (Blueprint $table) {
+        Schema::create('graduations', function (Blueprint $table) {
             $table->id();
-            $table->string('token')->nullable();
-            $table->string('email')->nullable();
-            $table->string('template')->nullable();
-            $table->foreignId('profile_id')->index()->constrained()->cascadeOnDelete();
-
-            $table->timestamps();
+            $table->string('title')->nullable();
         });
     }
 
@@ -28,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('shares');
+        Schema::dropIfExists('graduations');
     }
 };

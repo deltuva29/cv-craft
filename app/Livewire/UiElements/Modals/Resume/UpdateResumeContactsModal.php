@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire\UiElements\Modals\Profile;
+namespace App\Livewire\UiElements\Modals\Resume;
 
-use App\Models\Profile;
+use App\Models\Resume;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -14,25 +14,25 @@ use LivewireUI\Modal\ModalComponent;
 use Usernotnull\Toast\Concerns\WireToast;
 use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
 
-class UpdateProfileContactsModal extends ModalComponent implements HasForms
+class UpdateResumeContactsModal extends ModalComponent implements HasForms
 {
     use WireToast;
     use InteractsWithForms;
 
     public ?array $data = [];
 
-    public Profile $profile;
+    public Resume $resume;
 
     public static function modalMaxWidth(): string
     {
         return '2xl';
     }
 
-    public function mount(Profile $profile): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $profile;
+        $this->resume = $resume;
         $this->form->fill(
-            $this->profile->only([
+            $this->resume->only([
                 'position',
                 'location',
                 'phone',
@@ -67,7 +67,7 @@ class UpdateProfileContactsModal extends ModalComponent implements HasForms
                     ->nullable(),
             ])
             ->statePath('data')
-            ->model($this->profile);
+            ->model($this->resume);
     }
 
     public function render(): View
@@ -77,7 +77,7 @@ class UpdateProfileContactsModal extends ModalComponent implements HasForms
 
     public function save(): void
     {
-        $this->profile->update($this->form->getState());
+        $this->resume->update($this->form->getState());
         toast()->success(__('Saved.'))->push();
 
         $this->closeModal();

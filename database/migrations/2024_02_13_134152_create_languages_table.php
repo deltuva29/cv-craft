@@ -12,13 +12,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->integer('level')->default(0);
-            $table->string('title')->nullable();
-            $table->boolean('custom')->default(false);
-            $table->foreignId('profile_id')->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('resume_id')->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('language_title_id')->nullable()->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('language_level_id')->nullable()->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('languages');
     }
 };

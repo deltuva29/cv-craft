@@ -21,11 +21,6 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            'bio' => $this->faker->paragraph(4),
-            'position' => $this->faker->jobTitle(),
-            'location' => $this->faker->city(),
-            'linkedin' => $this->faker->url(),
-            'website' => $this->faker->url(),
             'user_id' => User::factory(),
         ];
     }

@@ -14,6 +14,8 @@ use App\Models\JobTitle;
 use App\Models\Language;
 use App\Models\LanguageLevel;
 use App\Models\LanguageTitle;
+use App\Models\Person;
+use App\Models\Resume;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -29,36 +31,34 @@ class DatabaseSeeder extends Seeder
             'email' => 'mindaugas@desoftlab.com',
         ]);
 
+        $resumes = Resume::factory(5)->create([
+            'profile_id' => $user->id,
+        ]);
+
+        foreach ($resumes as $resume) {
+            Person::factory(5)->create([
+                'resume_id' => $resume->id,
+            ]);
+        }
+
         JobTitle::factory(20)->create();
         Company::factory(10)->create();
         Graduation::factory(5)->create();
         LanguageTitle::factory(10)->create();
         LanguageLevel::factory(4)->create();
 
-//        Skill::factory(10)->create([
-//            'profile_id' => $user->id,
-//        ]);
-
         Experience::factory(3)->create([
-            'profile_id' => $user->id,
+            'resume_id' => $resumes[0]->id,
         ]);
         Education::factory(2)->create([
-            'profile_id' => $user->id,
+            'resume_id' => $resumes[0]->id,
         ]);
         Language::factory(1)->create([
-            'profile_id' => $user->id,
+            'resume_id' => $resumes[0]->id,
         ]);
         Certificate::factory(2)->create([
-            'profile_id' => $user->id,
+            'resume_id' => $resumes[0]->id,
         ]);
-
-//        Resume::factory(5)->create([
-//            'profile_id' => $user->id,
-//        ]);
-
-//        Share::factory(305)->create([
-//            'profile_id' => $user->id,
-//        ]);
 
         $this->call([
             SkillSeeder::class,

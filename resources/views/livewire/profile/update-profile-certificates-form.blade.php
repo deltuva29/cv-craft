@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Models\Profile;
+use App\Models\Resume;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\MarkdownEditor;
@@ -24,13 +25,13 @@ new class extends Component implements HasForms {
 
     public string $uuid;
 
-    public Profile $profile;
+    public Resume $resume;
 
-    public function mount(Profile $profile): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $profile;
+        $this->resume = $resume;
         $this->form->fill([
-            'certificates' => $profile->certificates->toArray()
+            'certificates' => $resume->certificates->toArray()
         ]);
     }
 
@@ -66,7 +67,7 @@ new class extends Component implements HasForms {
                     ->reorderableWithButtons(),
             ])
             ->statePath('data')
-            ->model($this->profile);
+            ->model($this->resume);
     }
 
     public function create(): void

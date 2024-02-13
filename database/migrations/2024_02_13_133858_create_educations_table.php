@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('educations', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->foreignId('profile_id')->nullable()->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('resume_id')->nullable()->index()->constrained()->cascadeOnDelete();
             $table->foreignId('graduation_id')->nullable()->index()->constrained()->cascadeOnDelete();
             $table->year('ended_year')->nullable();
             $table->string('specialty')->nullable();

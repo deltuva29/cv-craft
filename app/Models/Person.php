@@ -8,26 +8,27 @@ use App\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class Person extends Model
 {
     use HasUuid;
     use HasFactory;
+
+    /**
+     * @var string
+     */
+    protected $table = 'persons';
 
     /**
      * @var array<int, string>
      */
     protected $fillable = [
         'uuid',
-        'level',
+        'bio',
+        'position',
+        'location',
+        'phone',
+        'linkedin',
+        'website',
         'resume_id',
-        'title',
-        'custom',
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'custom' => 'boolean',
     ];
 }

@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('description')->nullable();
             $table->date('started_at')->nullable();
             $table->date('received_at')->nullable();
-            $table->foreignId('profile_id')->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('resume_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

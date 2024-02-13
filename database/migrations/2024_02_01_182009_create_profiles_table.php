@@ -15,12 +15,6 @@ return new class extends Migration {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->longText('bio')->nullable();
-            $table->string('position')->nullable();
-            $table->string('location')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('website')->nullable();
             $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

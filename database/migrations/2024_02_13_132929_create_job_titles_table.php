@@ -12,9 +12,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('language_levels', function (Blueprint $table) {
+        Schema::create('job_titles', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('name')->nullable();
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('language_levels');
+        Schema::dropIfExists('job_titles');
     }
 };
