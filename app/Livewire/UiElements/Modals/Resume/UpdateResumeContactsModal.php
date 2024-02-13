@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\UiElements\Modals\Resume;
 
-use App\Models\Resume;
+use App\Models\Person;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -21,18 +21,18 @@ class UpdateResumeContactsModal extends ModalComponent implements HasForms
 
     public ?array $data = [];
 
-    public Resume $resume;
+    public Person $person;
 
     public static function modalMaxWidth(): string
     {
         return '2xl';
     }
 
-    public function mount(Resume $resume): void
+    public function mount(Person $person): void
     {
-        $this->resume = $resume;
+        $this->person = $person;
         $this->form->fill(
-            $this->resume->only([
+            $this->person->only([
                 'position',
                 'location',
                 'phone',
@@ -67,17 +67,17 @@ class UpdateResumeContactsModal extends ModalComponent implements HasForms
                     ->nullable(),
             ])
             ->statePath('data')
-            ->model($this->resume);
+            ->model($this->person);
     }
 
     public function render(): View
     {
-        return view('livewire.ui-elements.modals.profile.update-profile-contacts-modal');
+        return view('livewire.ui-elements.modals.resume.update-resume-contacts-modal');
     }
 
     public function save(): void
     {
-        $this->resume->update($this->form->getState());
+        $this->person->update($this->form->getState());
         toast()->success(__('Saved.'))->push();
 
         $this->closeModal();

@@ -44,7 +44,7 @@ class CreateResumeExperienceModal extends ModalComponent implements HasForms
 
     public function render(): View
     {
-        return view('livewire.ui-elements.modals.profile.create-profile-experience-modal');
+        return view('livewire.ui-elements.modals.resume.create-resume-experience-modal');
     }
 
     public function form(Form $form): Form

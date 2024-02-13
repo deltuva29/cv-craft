@@ -6,9 +6,9 @@ namespace App\Traits\Skills;
 
 trait WithSkills
 {
-    public function addSkillsToProfile($profile, $submittedSkillIds): void
+    public function addSkillsToResume($resume, $submittedSkillIds): void
     {
-        $currentSkillIds = $profile->skills->pluck('title')->toArray();
+        $currentSkillIds = $resume->skills->pluck('title')->toArray();
 
         $skillsToAdd = array_diff($submittedSkillIds, $currentSkillIds);
         $skillsToRemove = array_diff($currentSkillIds, $submittedSkillIds);
@@ -17,10 +17,10 @@ trait WithSkills
             'title' => $skillId,
         ], $skillsToAdd);
 
-        $profile->skills()->createMany($newSkills);
+        $resume->skills()->createMany($newSkills);
 
         if (!empty($skillsToRemove)) {
-            $profile->skills()
+            $resume->skills()
                 ->whereIn('title', $skillsToRemove)
                 ->delete();
         }

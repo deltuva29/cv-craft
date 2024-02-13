@@ -13,7 +13,7 @@
                 <x-primary-button
                         onclick="Livewire.dispatch('openModal', {
                                 component: 'ui-elements.modals.user.update-user-modal',
-                                arguments: { user: {{ $user }}
+                                arguments: { user: {{ $user->id }}
                             }
                         })"
                         class="!bg-transparent !border-none group !focus-none !p-0"
@@ -41,7 +41,7 @@
                                 onclick="Livewire.dispatch('openModal', {
                                     component: 'ui-elements.modals.resume.create-resume-modal',
                                     arguments: {
-                                        profile: {{ $profile }}
+                                        profile: {{ $profile->id }}
                                     }
                                 })"
                         >

@@ -46,7 +46,7 @@ class UpdateResumeModal extends ModalComponent implements HasForms
 
     public function render(): View
     {
-        return view('livewire.ui-elements.modals.profile.update-profile-resume-modal');
+        return view('livewire.ui-elements.modals.resume.update-resume-modal');
     }
 
     public function form(Form $form): Form

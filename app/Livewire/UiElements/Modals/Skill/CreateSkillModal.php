@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\UiElements\Modals\Skill;
 
-use App\Models\Profile;
+use App\Models\Resume;
 use App\Models\SkillTitle;
 use App\Traits\Skills\WithSkills;
 use Filament\Forms\Components\Checkbox;
@@ -27,18 +27,18 @@ class CreateSkillModal extends ModalComponent implements HasForms
 
     public ?array $data = [];
 
-    public Profile $profile;
+    public Resume $resume;
 
     public static function modalMaxWidth(): string
     {
         return '2xl';
     }
 
-    public function mount(Profile $profile): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $profile;
+        $this->resume = $resume;
         $this->form->fill([
-            'title' => $profile->skills()
+            'title' => $resume->skills()
                 ->pluck('title')
                 ->toArray(),
         ]);
@@ -75,7 +75,7 @@ class CreateSkillModal extends ModalComponent implements HasForms
                     ->visible(fn(Get $get) => $get('custom_title')),
             ])
             ->statePath('data')
-            ->model($this->profile);
+            ->model($this->resume);
     }
 
     public function create(): void
@@ -86,15 +86,15 @@ class CreateSkillModal extends ModalComponent implements HasForms
         $selectedSkillTitles = $formData['title'] ?? [];
 
         if ($isCustomSkill) {
-            $this->profile->skills()->create([
+            $this->resume->skills()->create([
                 'custom' => true,
                 'title' => $customSkillName,
             ]);
         } else {
             $submittedSkillIds = $selectedSkillTitles;
 
-            $this->addSkillsToProfile(
-                $this->profile,
+            $this->addSkillsToResume(
+                $this->resume,
                 $submittedSkillIds
             );
         }
