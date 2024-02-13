@@ -48,10 +48,10 @@ class UpdateResumeContactsModal extends ModalComponent implements HasForms
             ->schema([
                 TextInput::make('position')
                     ->label(__('Position'))
-                    ->required(),
+                    ->nullable(),
                 TextInput::make('location')
                     ->label(__('Location'))
-                    ->required(),
+                    ->nullable(),
                 PhoneInput::make('phone')
                     ->label(__('Phone number'))
                     ->initialCountry('lt')

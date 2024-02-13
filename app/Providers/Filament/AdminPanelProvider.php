@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::hex('#279fdb'),
+                'primary' => Color::hex('#00A36C'),
             ])
             ->font('Varela Round')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

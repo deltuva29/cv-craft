@@ -78,7 +78,7 @@ new class extends Component {
 
                     <hr class="my-4">
                     <livewire:profile.update-profile-bio-form
-                            :user="$user"
+                            :resume="$resume"
                     />
                 </div>
             </div>

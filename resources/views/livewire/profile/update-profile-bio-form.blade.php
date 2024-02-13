@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Models\Person;
 use App\Models\Profile;
+use App\Models\Resume;
 use App\Models\User;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
@@ -25,14 +27,15 @@ new class extends Component implements HasForms {
 
     public string $uuid;
 
-    public Profile $profile;
+    public Resume $resume;
+    public ?Person $person;
 
-    public function mount(User $user): void
+    public function mount(Resume $resume): void
     {
-        $this->profile = $user->profile;
-        $this->uuid = $this->profile->uuid;
+        $this->person = $resume->person;
+        $this->uuid = $this->resume->uuid;
         $this->form->fill([
-            'bio' => $this->profile->bio
+            'bio' => $this->person->bio
         ]);
     }
 
@@ -60,7 +63,7 @@ new class extends Component implements HasForms {
 
     public function create(): void
     {
-        $this->profile->update($this->form->getState());
+        $this->person->update($this->form->getState());
         toast()->success(__('Saved.'))->push();
 
         $this->dispatch('profile-updated');

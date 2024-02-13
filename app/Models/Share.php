@@ -21,14 +21,14 @@ class Share extends Model
         'token',
         'email',
         'template',
-        'profile_id',
+        'resume_id',
     ];
 
     /**
-     * @return BelongsTo<Profile>
+     * @return BelongsTo<Resume>
      */
-    public function profile(): BelongsTo
+    public function resume(): BelongsTo
     {
-        return $this->belongsTo(Profile::class, 'profile_id');
+        return $this->belongsTo(Resume::class, 'resume_id');
     }
 }

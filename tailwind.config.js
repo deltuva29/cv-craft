@@ -26,7 +26,7 @@ export default {
     ],
     theme: {
         fontFamily: {
-            sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+            sans: ['Varela Round', ...defaultTheme.fontFamily.sans],
         },
         screens: {
             'sm': '640px',
@@ -45,11 +45,11 @@ export default {
         },
         extend: {
             colors: {
-                primary: '#175f83',
-                secondary: '#279fdb',
+                primary: '#666666',
+                secondary: '#00A36C',
                 tertiary: '#F0F8FF',
                 light: '#ffffff',
-                dark: '#279fdb',
+                dark: '#00A36C',
                 gray: {
                     100: '#f5f5f5',
                     200: '#eeeeee',

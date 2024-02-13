@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Profile;
+use App\Models\Resume;
 use App\Models\Share;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -25,7 +25,7 @@ class ShareFactory extends Factory
             'token' => Str::random(20),
             'email' => $this->faker->safeEmail(),
             'template' => 'default',
-            'profile_id' => Profile::factory(),
+            'resume_id' => Resume::factory(),
         ];
     }
 }
