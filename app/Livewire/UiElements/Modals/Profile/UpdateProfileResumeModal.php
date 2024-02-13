@@ -7,6 +7,7 @@ namespace App\Livewire\UiElements\Modals\Profile;
 use App\Models\Resume;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -38,6 +39,7 @@ class UpdateProfileResumeModal extends ModalComponent implements HasForms
                 'name',
                 'description',
                 'language',
+                'public',
             ])
         );
     }
@@ -51,6 +53,10 @@ class UpdateProfileResumeModal extends ModalComponent implements HasForms
     {
         return $form
             ->schema([
+                Toggle::make('public')
+                    ->label(fn($state) => $state ? __('Public') : __('Not-Public'))
+                    ->onColor('success')
+                    ->required(),
                 TextInput::make('name')
                     ->label(__('Title'))
                     ->required(),
