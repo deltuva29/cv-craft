@@ -13,7 +13,7 @@ class ShowController extends Controller
     public function __invoke(Request $request, Share $share)
     {
         return view("profile.shares.templates.{$share->template}", [
-            'share' => $share->load('profile.owner'),
+            'share' => $share->load('resume.owner'),
         ]);
     }
 }

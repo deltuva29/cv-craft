@@ -7,6 +7,7 @@ namespace App\Livewire\UiElements\Modals\Resume;
 use App\Models\Resume;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -34,7 +35,9 @@ class CreateResumeCertificateModal extends ModalComponent implements HasForms
     public function mount(Resume $resume): void
     {
         $this->resume = $resume;
-        $this->form->fill();
+        $this->form->fill([
+            'certificates' => $resume->certificates->toArray(),
+        ]);
     }
 
     public function render(): View
@@ -46,36 +49,43 @@ class CreateResumeCertificateModal extends ModalComponent implements HasForms
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->label(__('Title'))
-                    ->required()
-                    ->columnSpan('full'),
-                DatePicker::make('started_at')
-                    ->label(__('Started'))
-                    ->required(),
-                DatePicker::make('received_at')
-                    ->label(__('Received'))
-                    ->required(),
-                MarkdownEditor::make('description')
+                Repeater::make('certificates')
                     ->label(__(''))
-                    ->toolbarButtons([
-                        'redo',
-                        'undo',
-                    ])
-                    ->nullable()
-                    ->columnSpan('full'),
-            ])->columns()
+                    ->relationship()
+                    ->schema([
+                        TextInput::make('name')
+                            ->label(__('Title'))
+                            ->required()
+                            ->columnSpan('full'),
+                        DatePicker::make('started_at')
+                            ->label(__('Started'))
+                            ->required(),
+                        DatePicker::make('received_at')
+                            ->label(__('Received'))
+                            ->required(),
+                        MarkdownEditor::make('description')
+                            ->label(__(''))
+                            ->toolbarButtons([
+                                'redo',
+                                'undo',
+                            ])
+                            ->nullable()
+                            ->columnSpan('full'),
+                    ])->addActionLabel(__('+ Add Certificates'))
+                    ->columns()
+                    ->reorderable()
+                    ->reorderableWithButtons(),
+            ])
             ->statePath('data')
             ->model($this->resume);
     }
 
     public function create(): void
     {
-        $this->resume->certificates()
-            ->create($this->form->getState());
+        $this->form->getState();
         toast()->success(__('Saved.'))->push();
 
         $this->closeModal();
-        $this->dispatch('profile-updated');
+        $this->dispatch('resume-updated');
     }
 }

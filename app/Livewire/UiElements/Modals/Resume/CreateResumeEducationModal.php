@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\UiElements\Modals\Resume;
 
-use App\Models\Graduation;
 use App\Models\Resume;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -36,7 +36,9 @@ class CreateResumeEducationModal extends ModalComponent implements HasForms
     public function mount(Resume $resume): void
     {
         $this->resume = $resume;
-        $this->form->fill();
+        $this->form->fill([
+            'educations' => $resume->educations->toArray(),
+        ]);
     }
 
     public function render(): View
@@ -48,57 +50,59 @@ class CreateResumeEducationModal extends ModalComponent implements HasForms
     {
         return $form
             ->schema([
-                Select::make('graduation_id')
-                    ->label(__('Graduation'))
-                    ->options(
-                        Graduation::all()
-                            ->pluck('title', 'id')
-                            ->toArray()
-                    )
-                    ->required()
-                    ->searchable()
-                    ->preload(),
-                Select::make('ended_year')
-                    ->label(__('Ended year'))
-                    ->options(array_combine(range(now()->year, 1900), range(now()->year, 1900)))
-                    ->required()
-                    ->searchable()
-                    ->hidden(fn(Get $get): bool => $get('ended_year') === false),
-                TextInput::make('specialty')
-                    ->label(__('Specialty'))
-                    ->required()
-                    ->suffixIcon('heroicon-m-newspaper'),
-                TextInput::make('institution')
-                    ->label(__('Institution'))
-                    ->required()
-                    ->suffixIcon('heroicon-m-building-office'),
-                MarkdownEditor::make('achievements')
-                    ->label(__('Achievements'))
-                    ->toolbarButtons([
-                        'blockquote',
-                        'bold',
-                        'bulletList',
-                        'italic',
-                        'link',
-                        'orderedList',
-                        'redo',
-                        'strike',
-                        'undo',
-                    ])
-                    ->required()
-                    ->columnSpan('full'),
-            ])->columns()
+                Repeater::make('educations')
+                    ->label(__(''))
+                    ->relationship()
+                    ->schema([
+                        Select::make('graduation_id')
+                            ->label(__('Graduation'))
+                            ->relationship('graduation', 'title')
+                            ->required()
+                            ->searchable()
+                            ->preload(),
+                        Select::make('ended_year')
+                            ->label(__('Ended year'))
+                            ->options(array_combine(range(now()->year, 1900), range(now()->year, 1900)))
+                            ->required()
+                            ->searchable()
+                            ->hidden(fn(Get $get): bool => $get('ended_year') === false),
+                        TextInput::make('specialty')
+                            ->label(__('Specialty'))
+                            ->required()
+                            ->suffixIcon('heroicon-m-newspaper'),
+                        TextInput::make('institution')
+                            ->label(__('Institution'))
+                            ->required()
+                            ->suffixIcon('heroicon-m-building-office'),
+                        MarkdownEditor::make('achievements')
+                            ->label(__('Achievements'))
+                            ->toolbarButtons([
+                                'blockquote',
+                                'bold',
+                                'bulletList',
+                                'italic',
+                                'link',
+                                'orderedList',
+                                'redo',
+                                'strike',
+                                'undo',
+                            ])
+                            ->required()->columnSpan('full'),
+                    ])->addActionLabel(__('+ Add Education'))
+                    ->columns()
+                    ->reorderable()
+                    ->reorderableWithButtons(),
+            ])
             ->statePath('data')
             ->model($this->resume);
     }
 
     public function create(): void
     {
-        $this->resume->educations()
-            ->create($this->form->getState());
+        $this->form->getState();
         toast()->success(__('Saved.'))->push();
 
         $this->closeModal();
-        $this->dispatch('profile-updated');
+        $this->dispatch('resume-updated');
     }
 }

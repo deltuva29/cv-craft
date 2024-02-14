@@ -15,7 +15,7 @@ new class extends Component {
         $this->resume = $resume;
     }
 
-    #[On('profile-updated')]
+    #[On('resume-updated')]
     public function update(): void
     {
         $this->dispatch('$refresh');
@@ -28,13 +28,13 @@ new class extends Component {
 }; ?>
 
 <div>
-    @if (!$this->resume->educations->isEmpty())
-        <livewire:profile.update-profile-educations-form
-                :resume="$this->resume"
-        />
-    @else
-        <x-empty-content
-                title="{{ __('You have not added any educations yet.') }}"
-        />
-    @endif
+    <x-educations.content>
+        @forelse ($resume->educations as $education)
+            <x-educations.card :education="$education"/>
+        @empty
+            <x-empty-content
+                    title="{{ __('You have not added any educations yet.') }}"
+            />
+        @endforelse
+    </x-educations.content>
 </div>
