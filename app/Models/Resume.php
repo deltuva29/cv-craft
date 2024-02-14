@@ -108,14 +108,6 @@ class Resume extends Model
     }
 
     /**
-     * @return HasMany<Share>
-     */
-    public function shares(): HasMany
-    {
-        return $this->hasMany(Share::class, 'profile_id');
-    }
-
-    /**
      * @return HasMany<Certificate>
      */
     public function certificates(): HasMany

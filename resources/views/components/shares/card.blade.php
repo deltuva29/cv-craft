@@ -11,7 +11,9 @@
             >
             <div class="ml-3">
                 <p class="text-sm mb-1 font-medium text-gray-900">{{ $share->email }}</p>
-                <p class="w-fit bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $share->template }}</p>
+                <p class="w-fit bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                    <strong>{{ $share->resume->name }}</strong> {{ $share->template }}
+                </p>
             </div>
         </div>
         <div class="flex items-center">

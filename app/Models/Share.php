@@ -22,6 +22,7 @@ class Share extends Model
         'email',
         'template',
         'resume_id',
+        'profile_id',
     ];
 
     /**
@@ -30,5 +31,13 @@ class Share extends Model
     public function resume(): BelongsTo
     {
         return $this->belongsTo(Resume::class, 'resume_id');
+    }
+
+    /**
+     * @return BelongsTo<Profile>
+     */
+    public function profile(): BelongsTo
+    {
+        return $this->belongsTo(Profile::class, 'profile_id');
     }
 }

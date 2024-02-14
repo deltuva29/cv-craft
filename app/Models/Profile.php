@@ -35,4 +35,21 @@ class Profile extends Model
     {
         return $this->hasMany(Resume::class, 'profile_id');
     }
+
+    /**
+     * @return HasMany<Share>
+     */
+    public function shares(): HasMany
+    {
+        return $this->hasMany(Share::class, 'profile_id');
+    }
+
+    /**
+     * @return BelongsTo<Resume>
+     */
+    public function resume(): BelongsTo
+    {
+        return $this->belongsTo(Resume::class, 'profile_id')
+            ->latest();
+    }
 }

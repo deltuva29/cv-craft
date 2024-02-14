@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('email')->nullable();
             $table->string('template')->nullable();
             $table->foreignId('resume_id')->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('profile_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

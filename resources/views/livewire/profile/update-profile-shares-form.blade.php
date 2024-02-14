@@ -25,6 +25,12 @@ new class extends Component implements HasForms {
 
     public Profile $profile;
 
+    public function mount(Profile $profile): void
+    {
+        $this->profile = $profile;
+        $this->form->fill();
+    }
+
     public function form(Form $form): Form
     {
         return $form
@@ -35,13 +41,20 @@ new class extends Component implements HasForms {
                     ->email()
                     ->helperText(__('Your email address will be used to share your profile.'))
                     ->suffixIcon('heroicon-m-envelope'),
+                Select::make('resume_id')
+                    ->relationship('resume', 'name')
+                    ->label(__('Resume'))
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Select::make('template')
                     ->label(__('Template'))
                     ->options(ShareTemplate::class)
                     ->helperText(__('Choose a template to share your profile.'))
                     ->required()
             ])
-            ->statePath('data');
+            ->statePath('data')
+            ->model($this->profile);
     }
 
 

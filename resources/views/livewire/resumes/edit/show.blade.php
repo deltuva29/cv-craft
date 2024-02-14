@@ -33,7 +33,7 @@ new class extends Component {
         <div class="max-w-7xl mx-auto py-1 px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
                 <div>
-                    <h3 class="text-secondary font-semibold text-xl leading-tight truncate">
+                    <h3 class="text-secondary font-semibold text-2xl leading-tight truncate">
                         {{ $resume->name }}
                         <x-status-badge
                                 :status="$resume->public"
