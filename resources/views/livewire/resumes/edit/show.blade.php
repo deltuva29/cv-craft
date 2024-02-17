@@ -1,21 +1,36 @@
 <?php
 
+use App\Models\Person;
 use App\Models\Resume;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
+use Usernotnull\Toast\Concerns\WireToast;
 
 new class extends Component {
+    use WireToast;
+
     public Resume $resume;
+    public ?Person $person = null;
 
     public function mount(Resume $resume): void
     {
         $this->resume = $resume;
+        $this->person = $resume->person;
     }
 
     #[On('resume-updated')]
     public function updateResume(): void
     {
         $this->dispatch('$refresh');
+    }
+
+    public function delete(): void
+    {
+        $this->resume->delete();
+        $this->person->clearMediaCollection('avatar');
+        toast()->success(__('Deleted'))->push();
+
+        $this->redirectIntended('/dashboard');
     }
 }; ?>
 
@@ -260,6 +275,27 @@ new class extends Component {
                             :resume="$resume"
                             lazy="on-load"
                     />
+                </div>
+            </div>
+
+            <hr class="my-2">
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    <div class="flex justify-between mb-6 items-center">
+                        <div>
+                            <x-header-title
+                                    title="{{ __('Delete CV permanently') }}"
+                                    subtitle="{{ __('Delete your CV permanently') }}"
+                            />
+                        </div>
+                    </div>
+
+                    <x-danger-button
+                            wire:click="delete"
+                            wire:confirm.prompt="{{ __('Are you sure to delete your CV?') }}\n\n{{ __('Type :name to confirm.', ['name' => $resume->name]) }}|{{ $resume->name }}"
+                    >
+                        {{ __('Delete') }}
+                    </x-danger-button>
                 </div>
             </div>
         </div>

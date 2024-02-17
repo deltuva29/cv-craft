@@ -116,5 +116,12 @@
   "Update your resume.": "Keiskite savo gyvenimo informaciją.",
   "CV Language": "CV Kalba",
   "Public": "Rodomas",
-  "Not-Public": "Nerodomas"
+  "Not-Public": "Nerodomas",
+  "Delete CV permanently": "Ištrinti CV.",
+  "Delete your CV permanently": "Ištrinti savo CV visam laikui.",
+  "Delete CV": "Ištrinti CV",
+  "Are you sure to delete your CV?": "Ar tikrai norite ištrinti savo CV?",
+  "Type :name to confirm.": "Įveskite :name, kad patvirtinti.",
+  "Delete": "Ištrinti",
+  "Deleted": "CV buvo ištrintas visam laikui"
 }

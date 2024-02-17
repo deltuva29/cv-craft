@@ -115,5 +115,11 @@
   "Update your resume.": "Обновите ваш резюме.",
   "CV Language": "Язык резюме",
   "Public": "Публичный",
-  "Not-Public": "Не публичный"
+  "Not-Public": "Не публичный",
+  "Delete CV permanently": "Удалить резюме полностью",
+  "Delete your CV permanently": "Удалить резюме",
+  "Are you sure to delete your CV?": "Вы уверены, что хотите удалить этот резюме?",
+  "Type :name to confirm.": "Напишите :name для подтверждения.",
+  "Delete": "Удалить",
+  "Deleted": "Удалено полностью со всеми связанными данными."
 }

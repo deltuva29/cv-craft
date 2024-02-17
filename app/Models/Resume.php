@@ -10,15 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Spatie\Image\Exceptions\InvalidManipulation;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Resume extends Model
 {
     use HasUuid;
     use HasFactory;
-    use InteractsWithMedia;
 
     /**
      * @var array<int, string>
@@ -39,17 +35,6 @@ class Resume extends Model
         'public' => 'boolean',
     ];
 
-    /**
-     * @throws InvalidManipulation
-     */
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this->addMediaConversion('thumb')
-            ->width(200)
-            ->height(200)
-            ->sharpen(10)
-            ->performOnCollections('avatar');
-    }
 
     /**
      * @return HasOne<Profile>

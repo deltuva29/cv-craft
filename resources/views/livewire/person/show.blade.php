@@ -58,7 +58,7 @@ new class extends Component {
     public function removeAvatar(): void
     {
         try {
-            if ($this->person && $this->person->hasMedia('avatar')) {
+            if ($this->person->hasMedia('avatar')) {
                 $this->person->clearMediaCollection('avatar');
 
                 toast()->success(__('Removed.'))->push();
@@ -145,7 +145,7 @@ new class extends Component {
                                 </a>
                             </div>
                         </div>
-                        
+
                         @if ($this->person->phone)
                             <div class="font-medium text-lg text-gray-700 dark:text-gray-200 leading-tight">
                                 <div class="flex items-center justify-start md:justify-start">
