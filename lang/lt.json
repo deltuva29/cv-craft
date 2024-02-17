@@ -123,5 +123,9 @@
   "Are you sure to delete your CV?": "Ar tikrai norite ištrinti savo CV?",
   "Type :name to confirm.": "Įveskite :name, kad patvirtinti.",
   "Delete": "Ištrinti",
-  "Deleted": "CV buvo ištrintas visam laikui"
+  "Deleted": "CV buvo ištrintas visam laikui",
+  "Create a new resume with <strong class=\"text-secondary\">:name</strong>!": "Susikurkite savo naują CV su <strong class=\"text-secondary\">:name</strong>!",
+  "The simplest way to create a new resume.": "Pats papraščiausias būdas susikurtį naują gyvenimo aprašymą(CV).",
+  "Log In": "Prisijungti",
+  "Create Account": "Registruotis"
 }

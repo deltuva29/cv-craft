@@ -121,5 +121,9 @@
   "Are you sure to delete your CV?": "Вы уверены, что хотите удалить этот резюме?",
   "Type :name to confirm.": "Напишите :name для подтверждения.",
   "Delete": "Удалить",
-  "Deleted": "Удалено полностью со всеми связанными данными."
+  "Deleted": "Удалено полностью со всеми связанными данными.",
+  "Create a new resume with <strong class=\"text-secondary\">:name</strong>!": "Создайте новый резюме с <strong class=\"text-secondary\">:name</strong>!",
+  "The simplest way to create a new resume.": "Самый простой способ создания нового резюме.",
+  "Log In": "Войти",
+  "Create Account": "Создать аккаунт"
 }
