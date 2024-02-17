@@ -33,6 +33,13 @@ class Education extends Model
     ];
 
     /**
+     * @var string[]
+     */
+    protected $with = [
+        'graduation',
+    ];
+
+    /**
      * @var array<string, string>
      */
     protected $casts = [

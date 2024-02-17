@@ -26,6 +26,13 @@ class Share extends Model
     ];
 
     /**
+     * @var string[]
+     */
+    protected $with = [
+        'resume',
+    ];
+
+    /**
      * @return BelongsTo<Resume>
      */
     public function resume(): BelongsTo
