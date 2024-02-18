@@ -15,7 +15,7 @@ use Livewire\Volt\Volt;
 |
 */
 
-Volt::route('/', 'pages.home.index')->name('home');
+Volt::route('/', 'pages.home')->name('pages.home');
 
 Route::middleware(['auth', 'verified', 'setLocale'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
