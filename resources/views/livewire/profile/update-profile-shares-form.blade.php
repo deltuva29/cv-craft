@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Enums\ShareTemplate;
+use App\Mail\ShareRequest;
 use App\Models\Profile;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
@@ -61,7 +62,9 @@ new class extends Component implements HasForms {
     public function create(): void
     {
         $this->validate();
-        $this->profile->shares()->create($this->form->getState());
+        $share = $this->profile->shares()->create($this->form->getState());
+        Mail::to($this->form->getState()['email'])->send(new ShareRequest($share));
+
         $this->form->fill();
         toast()->success(__('Saved.'))->push();
 
