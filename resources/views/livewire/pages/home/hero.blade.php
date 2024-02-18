@@ -22,24 +22,26 @@ new class extends Component {
                 </p>
             </div>
 
-            <div class="my-12">
-                <div class="flex flex-col justify-center items-center space-y-2">
-                    <x-nav-link
-                            :href="route('login')"
-                            class="w-full sm:w-1/2 flex justify-center items-center !px-4 !py-4 bg-secondary dark:bg-secondary border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-primary/75 dark:hover:bg-white focus:bg-primary/75 dark:focus:bg-primary/75 active:bg-primary/75 dark:active:bg-primary/75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
-                            wire:navigate
-                    >
-                        {{ __('Log In') }}
-                    </x-nav-link>
-                    <x-nav-link
-                            :href="route('register')"
-                            class="w-full sm:w-1/2 flex justify-center items-center !px-4 !py-4 bg-secondary dark:bg-secondary border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-primary/75 dark:hover:bg-white focus:bg-primary/75 dark:focus:bg-primary/75 active:bg-primary/75 dark:active:bg-primary/75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
-                            wire:navigate
-                    >
-                        {{ __('Create Account') }}
-                    </x-nav-link>
+            @guest
+                <div class="my-12">
+                    <div class="flex flex-col justify-center items-center space-y-2">
+                        <x-nav-link
+                                :href="route('login')"
+                                class="w-full sm:w-1/2 flex justify-center items-center !px-4 !py-4 bg-secondary dark:bg-secondary border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-primary/75 dark:hover:bg-white focus:bg-primary/75 dark:focus:bg-primary/75 active:bg-primary/75 dark:active:bg-primary/75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
+                                wire:navigate
+                        >
+                            {{ __('Log In') }}
+                        </x-nav-link>
+                        <x-nav-link
+                                :href="route('register')"
+                                class="w-full sm:w-1/2 flex justify-center items-center !px-4 !py-4 bg-secondary dark:bg-secondary border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-primary/75 dark:hover:bg-white focus:bg-primary/75 dark:focus:bg-primary/75 active:bg-primary/75 dark:active:bg-primary/75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150"
+                                wire:navigate
+                        >
+                            {{ __('Create Account') }}
+                        </x-nav-link>
+                    </div>
                 </div>
-            </div>
+            @endguest
         </main>
     </div>
 </div>
