@@ -127,5 +127,8 @@
   "Create a new resume with <strong class=\"text-secondary\">:name</strong>!": "Susikurkite savo naują CV su <strong class=\"text-secondary\">:name</strong>!",
   "The simplest way to create a new resume.": "Pats papraščiausias būdas susikurtį naują gyvenimo aprašymą(CV).",
   "Log In": "Prisijungti",
-  "Create Account": "Registruotis"
+  "Create Account": "Registruotis",
+  "Share Resume(CV) request from :email": "Gautas(CV) pasidalinimas nuo :email",
+  "Share Resume(CV) from <strong class=\"text-secondary\">:full_name</strong>.": "Gautas(CV) pasidalinimas nuo <strong class=\"text-secondary\">:full_name</strong>.",
+  "This email was sent by :app_name.": "Šį el. laišką atsiuntė :app_name."
 }

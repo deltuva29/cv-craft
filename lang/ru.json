@@ -125,5 +125,8 @@
   "Create a new resume with <strong class=\"text-secondary\">:name</strong>!": "Создайте новый резюме с <strong class=\"text-secondary\">:name</strong>!",
   "The simplest way to create a new resume.": "Самый простой способ создания нового резюме.",
   "Log In": "Войти",
-  "Create Account": "Создать аккаунт"
+  "Create Account": "Создать аккаунт",
+  "Share Resume(CV) request from :email": "Поделиться резюме(CV) запрос от :email",
+  "Share Resume(CV) from <strong class=\"text-secondary\">:full_name</strong>.": "Поделиться резюме(CV) запрос от <strong class=\"text-secondary\">:full_name</strong>.",
+  "This email was sent by :app_name.": "Это письмо было отправлено :app_name."
 }
