@@ -1,7 +1,7 @@
 # Laravel + Livewire-Volt/Livewire-Forms + Tailwind CSS
 Live https://cv-craft.desoftlab.com/
 
-## Login page
+## Home page
 ![Screenshot 2025-02-13 at 02-54-39 CvCraft](https://github.com/user-attachments/assets/773b0e08-cbb7-4251-b2b3-394cbdc018cf)
 ## CV list page
 ![Screenshot 2025-02-13 at 02-55-05 CvCraft](https://github.com/user-attachments/assets/0d65a1b1-548d-49d6-a3f8-831e0a756020)
