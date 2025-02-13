@@ -18,6 +18,8 @@
     </style>
 
     <!-- Scripts -->
+    <script src="https://js.hcaptcha.com/1/api.js?hl=lt" async defer></script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans text-gray-900 antialiased">
