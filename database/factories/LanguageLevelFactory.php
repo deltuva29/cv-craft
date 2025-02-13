@@ -20,7 +20,7 @@ class LanguageLevelFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(),
+            'title' => $this->faker->randomElement(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']),
         ];
     }
 }
