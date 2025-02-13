@@ -1,4 +1,4 @@
-# Laravel + Filament + Livewire-Volt/Filament-Forms + Tailwind CSS 
+# Laravel + Filament + Livewire-Volt/Filament-Forms/AlpineJs + Tailwind CSS 
 Live https://cv-craft.desoftlab.com/
 
 ## Home page
