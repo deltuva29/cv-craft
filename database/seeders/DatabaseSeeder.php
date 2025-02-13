@@ -20,10 +20,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::factory()->create([
-            'name' => 'Mindaugas Deltuva',
-            'email' => 'mindaugas@desoftlab.com',
-        ]);
+//        $user = User::factory()->create([
+//            'name' => 'Mindaugas Deltuva',
+//            'email' => 'mindaugas@desoftlab.com',
+//        ]);
 
 //        $resumes = Resume::factory(5)->create([
 //            'profile_id' => $user->id,
